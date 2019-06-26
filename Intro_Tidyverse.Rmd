@@ -414,11 +414,15 @@ In this tutorial, you have been introducted to the meta-package `tidyverse` and 
 
 ******
 
+## Additional Resources 
+
 If you would like to know more about data visualisation using `tidyverse` check out [Hack Your Data Beautiful](https://psyteachr.github.io/hack-your-data/index.html).
 
 This was a postgraduate led workshop which took place in April 2019 that introduced data visualisation in R to **complete beginners**. It was ran by our very own postgraduate students: [Anna Henschel](https://twitter.com/AnnaHenschel?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor), [Rebecca Lai](https://twitter.com/_r_lai_?lang=en), [Stephanie Allan](https://twitter.com/eolasinntinn?lang=en), [Carolyn Saund](https://twitter.com/carolynbot), [Lovisa Sundin](https://twitter.com/menimagerie?lang=en), [Jack Taylor](https://twitter.com/JackEdTaylor) and me, [Shannon McNee](https://twitter.com/ShannonMcNee2). 
 
+Also check out: 
 
+* [`tidyverse` data wrangling cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 
 
