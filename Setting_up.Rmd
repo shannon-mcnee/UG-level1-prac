@@ -177,19 +177,11 @@ Imagine you want to bake some chocolate brownies. You read the recipe and it tel
 
 Functions are structured in the following way:
 
-```{r, eval = FALSE} 
-
-function_name(argument_1,argument_2,argument_3,...)
-
-```
+`function_name(argument_1,argument_2,argument_3,...)`
 
 The command (or action) is the thing outside the brackets, and the things that are inside the brackets are **input arguments** (e.g. the things that the action should be executed on). How would this look in our baking analogy? 
 
-```{r, eval = FALSE}
-
-mix(eggs,flour,sugar)
-
-```
+`mix(eggs,flour,sugar)`
 
 Here, we are mixing (command/action) eggs, flour, and sugar (input arguments) together. Whilst functions **take** input arguments, they **give** outputs. So, in the above baking example, our output would be a batter that we can now put in a cake tin. 
 

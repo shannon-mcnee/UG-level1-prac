@@ -71,7 +71,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="/Library/Frameworks/R.framework/Versions/3.5/Resources/library/webex/reports/default/webex.css" type="text/css" />
+<link rel="stylesheet" href="webex.css" type="text/css" />
 
 
 
@@ -410,7 +410,7 @@ div.tocify {
 <p><br></p>
 <p>The aim of this resource is to provide you with hints, tips, and support based on questions from previous Level One students.</p>
 <p><a href="Setting_up.html">Setting Up</a> introduces you to the R environment, different file types, and teaches you how to resolve common set up errors.</p>
-<p><a href="Intro_Tidyverse.html">Introduction to Tidyverse and Data Visualisation</a> introduces you to the R package <code>tidyverse</code>, highlighting how we can use the 'Wickham Six' to make data analysis enjoyable and produce beautiful data visualisations.</p>
+<p><a href="Intro_Tidyverse.html">Introduction to Tidyverse and Data Visualisation</a> introduces you to the R package <code>tidyverse</code>, highlighting how we can use the ‘Wickham Six’ to make data analysis enjoyable and produce beautiful data visualisations.</p>
 <p><br></p>
 <div id="installing-r-on-your-own-device" class="section level2">
 <h2>Installing R on your own device</h2>
@@ -419,7 +419,7 @@ div.tocify {
 </div>
 <div id="other-sources-of-help" class="section level2">
 <h2>Other sources of help</h2>
-<p>Learning R for the first time can be daunting. It's important to remember that probably everyone is <strong>feeling the same way</strong>. Some of our postgraduates spoke recently about the challenges they faced in learning R for the first time, and how these challenges made their successes even better. Listen to our podcast <a href="https://psyteachr.github.io/hack-your-data/podcast.html">here</a>.</p>
+<p>Learning R for the first time can be daunting. It’s important to remember that probably everyone is <strong>feeling the same way</strong>. Some of our postgraduates spoke recently about the challenges they faced in learning R for the first time, and how these challenges made their successes even better. Listen to our podcast <a href="https://psyteachr.github.io/hack-your-data/podcast.html">here</a>.</p>
 <p>Check out the Level One Psychology Slack Channel (<em>add link</em>) and Moodle page (<em>add link</em>) for further support with the practical element of this course.</p>
 </div>
 
@@ -461,26 +461,6 @@ solveme_func = function(e) {
   } else {
     cl.remove("correct");
   }
-
-  // match numeric answers within a specified tolerance
-  if(this.dataset.tol){
-    var tol = JSON.parse(this.dataset.tol);  
-    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
-    if (matches.reduce((a, b) => a + b, 0) > 0) {
-      cl.add("correct");
-    } else {
-      cl.remove("correct");
-    }  
-  }
-
-  // added regex bit
-  if (cl.contains("regex")){
-    answer_regex = RegExp(real_answers.join("|"))
-    if (answer_regex.test(my_answer)) {
-      cl.add("correct");
-    }  
-  }
-  
   update_total_correct();
 }
 
