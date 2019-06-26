@@ -302,13 +302,13 @@ library(tidyvere)
 ...gives me this error? 
 
 ![](tidyerror.png)
-
+<br>
 `r hide("Hint")`
 
 R is very particular about spelling. R can't guess what you mean!
 
 `r unhide()`
-
+<br>
 ```{r, eval = FALSE, webex.hide = TRUE}
 
 library(tidyverse) 
