@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Web Exercises</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="webex.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Level One Psychology Practical Support</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Setting_up.html">Setting Up</a>
+</li>
+<li>
+  <a href="Intro_Tidyverse.html">Introduction to Tidyverse and Data Visualisation</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Web Exercises</h1>
+
+</div>
+
+
+<div id="data-relations" class="section level2">
+<h2>Data Relations</h2>
+<p>In the previous tutorial, you were introduced to the concept of <strong>tidy data</strong> in which:</p>
+<ol style="list-style-type: decimal">
+<li>Each variable is in a <input class='solveme nospaces' size='6' data-answer='["column"]'/></li>
+<li>Each observation is a <input class='solveme nospaces' size='3' data-answer='["row"]'/></li>
+<li>Each value is a <input class='solveme nospaces' size='4' data-answer='["cell"]'/></li>
+</ol>
+<p>You were also introduced to <code>tidyverse</code> and nine key <code>tidyverse</code> verb functions:</p>
+<ul>
+<li><code>select()</code></li>
+<li><code>group_by()</code></li>
+<li><code>filter()</code></li>
+<li><code>mutate()</code></li>
+<li><code>arrange()</code></li>
+<li><code>summarise()</code></li>
+<li><code>gather()</code></li>
+<li><code>spread()</code></li>
+<li><code>separate()</code></li>
+</ul>
+<p>Another important part of making data tidy, however, is developing an understanding of <strong>data relations</strong>. How can we combine data from various different sources in a way which is clean and effective?</p>
+<p>It is an annoying reality of research that you will more than likely be faced with the task of combining various data files together. For instance, it is not uncommon for an experimental software to create a new file for <strong>every</strong> participant you run and for each participant’s file to contain numerous columns and rows of data, only some of which you are actually interested in. Multiple tables of data are called <strong>relational data</strong> because it is the relations, not just the individual datasets, that are important.</p>
+<hr />
+<p><strong>Example of Relational Data in Real Life</strong></p>
+<p>You are conducting a study to investigate whether adolescents (aged 11-18 years) use social media around bedtime more often than older people (45-60 years) and how this social media use may relate to sleep health. You have two data tables: one containing demographic information (e.g. age) and another containing participant responses to questionnaires regarding night-time social media use and sleep health. You want to investigate the influence of <strong>age</strong> upon the use of social media at night, so you must put these two tables together so that participant demographic information from one table correctly matches with the data of <strong>the same participant</strong> in your questionnaire data table.</p>
+<hr />
+<p>Being able to wrangle your data, manipulate it into different layouts, extract the parts you need, and summarise it, is one of the most important skills we will help you learn in the coming weeks.</p>
+<p>Luckily, R can make this task a lot less painful through the use of <strong>join verbs</strong> and <strong>set operations</strong>.</p>
+</div>
+<div id="join-verbs" class="section level2">
+<h2>Join Verbs</h2>
+<p>There are two main families of join verbs that you will be using over the coming weeks: <strong>mutating</strong> joins and <strong>filtering</strong> joins.</p>
+<p><strong>Mutating</strong> joins add new variables to one data frame from <strong>matching observations</strong> in another. These include:</p>
+<ul>
+<li><code>left_join()</code></li>
+<li><code>right_join()</code></li>
+<li><code>inner_join()</code></li>
+<li><code>full_join()</code></li>
+</ul>
+<p><strong>Filtering</strong> joins filter observations from one data frame based on <strong>whether or not</strong> they match an observation in the other table. These include:</p>
+<ul>
+<li><code>semi_join()</code></li>
+<li><code>anti_join()</code></li>
+</ul>
+<p>All the joins - mutating and filtering - follow the same basic structure:</p>
+<p><code>****_join(x, y, by = NULL, suffix = c(&quot;.x&quot;, &quot;.y&quot;))</code></p>
+<ul>
+<li><code>x</code> = the first (<em>left</em>) table</li>
+<li><code>y</code> = the second (<em>right</em>) table</li>
+<li><code>by</code> = what columns to match on. If this is left blank, R will automatically match on all columns with the same names in the two tables so it’s best to be specific here.</li>
+<li><code>suffix</code> = if columns have the same in the two tables, but you <strong>aren’t</strong> joining them, they get a suffix so that you can tell them apart. This defaults to “.x” and “.y”, but if you want you can use the <code>suffix</code> argument to make these more meaningful.</li>
+</ul>
+<hr />
+<p><strong>Pause and test your knowledge!</strong></p>
+<ul>
+<li>What is the purpose of <strong>mutating</strong> joins?</li>
+</ul>
+<p><select class='solveme' data-answer='["adds new variables to a data frame by finding a match in another data frame"]'> <option></option> <option>adds new variables to a data frame by finding a match in another data frame</option> <option>conditionally adds information to a data frame</option> <option>binds rows of tables together</option></select></p>
+<ul>
+<li>What is the purpose of <strong>filtering</strong> joins?</li>
+</ul>
+<p><select class='solveme' data-answer='["conditionally adds information to a data frame"]'> <option></option> <option>adds new variables to the a data frame by finding a match in the other data frame</option> <option>conditionally adds information to a data frame</option> <option>binds rows of tables together</option></select></p>
+<hr />
+<p>It can be a bit confusing getting your head around how joins work at first (well - for me it was anyway) so let’s just use some really simple data (i.e. not messy) so that we can focus our attention on understanding how each join works.</p>
+<p>Before we get started, open up a new script (<strong>File &gt; New File &gt; R Script</strong>) so that we can keep each tutorial nice and neat. Make sure to give your script a sensible name and save it in an appropriate folder. Set your working directory to where your script is - if you need help with this go back to <a href="Setting_up.html">Setting Up</a>.</p>
+<p>In your script, type:</p>
+<pre class="r"><code>library(tidyverse) </code></pre>
+<p>Remember - think of R like a smartphone. Your phone can’t just read your mind and open Instagram. You need to tell your phone to open it by clicking on the Instagram icon. So, every time we want to use <code>tidyverse</code> we need to <strong>load it in</strong>.</p>
+<p>Next, let’s make up some simple data. Another great thing about R is that you can actually simulate data. So, if you ever want some data to practice with - you don’t need to ask any of the teaching staff, you have the ability to make your own practice sets right here!</p>
+<p>Let’s use the <strong>Example of Relational Data in Real Life</strong> example above. You are a researcher who is interested in whether adolescents (11-16 years) use social media more around bedtime than older people (45-60 years). Participants’ provided responses on a night-time social media use and sleep health scale. Higher scores on the night-time social media use scale suggests more frequent use of social media around bedtime. Lower scores on the sleep health scale indicate poorer sleep.</p>
+<p><strong>Don’t be tempted to just copy and paste the code below</strong>. I highly recommend typing it out in your own script so that you can get used to working with the R environment and syntax.</p>
+<pre class="r"><code>subject &lt;- tibble(id = seq(1,5),
+                  sex = c(&quot;m&quot;,&quot;m&quot;,&quot;f&quot;,&quot;f&quot;,&quot;f&quot;), 
+                  age = c(11,15,16,40,58)
+                  )
+
+subject</code></pre>
+<pre><code>## # A tibble: 5 x 3
+##      id sex     age
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1 m        11
+## 2     2 m        15
+## 3     3 f        16
+## 4     4 f        40
+## 5     5 f        58</code></pre>
+<p>There you go - we just simulated some data! Remember to read from the right hand side of the arrow to the left. What I’m doing here is I’m using the function <code>tibble()</code> to build a data frame with the columns <code>id</code>, <code>sex</code>, and <code>age</code>. I have made the <code>id</code> column by using <code>seq()</code> to generate a sequence of numbers from 1 to 5. In <code>sex</code> I’ve used <code>c()</code> to make a <strong>character vector</strong> which denotes whether the participant is male or female. In <code>age</code> I have again used <code>c()</code> to make a <strong>numeric vector</strong> of the participants ages.</p>
+<hr />
+<p>Remember - if you ever find yourself confused about what a function does, type <code>?function name</code> into your console to access built in help menus!</p>
+<hr />
+<p>So, we’ve got our demographic data (e.g. sex and age). Now, we need to simulate some scores for our participants.</p>
+<pre class="r"><code>exp &lt;- tibble(
+  id = c(2, 3, 4, 4, 5, 5, 6, 6, 7),
+  social_score = c(10, 18, 21, 23, 9, 11, 11, 12, 3), 
+  sleep_score = c(9, 5, 4, 15, 6, 10, 13, 20, 15)
+)
+
+exp</code></pre>
+<pre><code>## # A tibble: 9 x 3
+##      id social_score sleep_score
+##   &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1     2           10           9
+## 2     3           18           5
+## 3     4           21           4
+## 4     4           23          15
+## 5     5            9           6
+## 6     5           11          10
+## 7     6           11          13
+## 8     6           12          20
+## 9     7            3          15</code></pre>
+<p>I’ve used <code>tibble()</code> again here to make a data frame with three columns: <code>id</code>, <code>social_score</code> and <code>sleep_score</code>. In <code>id</code> I have used <code>c()</code> to make a <strong>numeric vector</strong> of participant’s id numbers and in <code>social_score</code> and <code>sleep_score</code> I have used <code>c()</code> to make <strong>numeric vectors</strong> of participant total scores on the night-time social media use and sleep health measures.</p>
+<p>You should now have two separate data frames in your <strong>Global Environment</strong>, <code>subject</code> (demographic information) and <code>exp</code> (questionnaire scores).</p>
+<p>Now it’s time to have a go at using some <strong>mutating joins</strong> on our data.</p>
+</div>
+<div id="mutating-joins" class="section level2">
+<h2>Mutating Joins</h2>
+<p><strong>Mutating</strong> joins add new variables to one data frame from <strong>matching observations</strong> in another.</p>
+<div id="left_join" class="section level3">
+<h3><code>left_join()</code></h3>
+<p>A <code>left_join()</code> keeps all the data from the left table and joins anything that matches from the right table. In other words, all of the information in the <strong>left</strong> table is retained whilst only the <strong>matching</strong> information from the right table is added. If there is information that doesn’t match in the right table, it is discarded. If the left table has more than one match for a row in the right table, there will be more than one row in the joined table.</p>
+<div class="figure">
+<img src="left-join.gif" />
+
+</div>
+<p>How do we tell R to carry out this action?</p>
+<pre class="r"><code>left_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<pre><code>## # A tibble: 7 x 5
+##      id sex     age social_score sleep_score
+##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1     1 m        11           NA          NA
+## 2     2 m        15           10           9
+## 3     3 f        16           18           5
+## 4     4 f        40           21           4
+## 5     4 f        40           23          15
+## 6     5 f        58            9           6
+## 7     5 f        58           11          10</code></pre>
+<p>Let’s break this down. We are telling R to make <code>subject</code> the <strong>left</strong> table and <code>exp</code> the <strong>right</strong> table, and to join them by <code>id</code>. Remember, this is all about <strong>relational data</strong>. We join by <code>id</code> because both <code>subject</code> and <code>exp</code> have <code>id</code> columns.</p>
+<hr />
+<p><strong>Pause here and interpret the above code and output</strong></p>
+<ul>
+<li>How could you translate this code into English? Physically write it out in your own words before looking at the solution.</li>
+</ul>
+<div class="solution">
+<button>
+Solution
+</button>
+<p>Take <code>subject</code> and <code>exp</code> and join these tables by the <code>id</code> column. Keep all of the <code>subject</code> information and anything that matches <code>exp</code>.</p>
+</div>
+<ul>
+<li>True or False? Participant 1 completed the night-time social media use questionnaire, but not the sleep health questionnaire. <select class='solveme' data-answer='["FALSE"]'> <option></option> <option>TRUE</option> <option>FALSE</option></select> <br></li>
+<li>True or False? Some ID numbers have been used more than once. <select class='solveme' data-answer='["TRUE"]'> <option></option> <option>TRUE</option> <option>FALSE</option></select> <br></li>
+<li>True or False? Demographic information (e.g. sex and age) is available for all participants. <select class='solveme' data-answer='["FALSE"]'> <option></option> <option>TRUE</option> <option>FALSE</option></select></li>
+</ul>
+<hr />
+</div>
+<div id="right_join" class="section level3">
+<h3><code>right_join()</code></h3>
+<p>A <code>right_join()</code> keeps all the data from the second (right) table and joins anything that matches from the first (left) table. If you’re thinking “that’s just exactly the same as a <code>left_join()</code> but with the order flipped”. You would be right!</p>
+<p>Technically, there’s nothing actually stopping us from carrying out a <code>right_join()</code> by using the <code>left_join()</code> function and swapping the table positions in the input arguments. <strong>However</strong>, you will make your life <strong>much</strong> easier if you use these functions as intended. It saves so much unnecessary confusion.</p>
+<div class="figure">
+<img src="right-join.gif" />
+
+</div>
+<pre class="r"><code>right_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<pre><code>## # A tibble: 9 x 5
+##      id sex     age social_score sleep_score
+##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1     2 m        15           10           9
+## 2     3 f        16           18           5
+## 3     4 f        40           21           4
+## 4     4 f        40           23          15
+## 5     5 f        58            9           6
+## 6     5 f        58           11          10
+## 7     6 &lt;NA&gt;     NA           11          13
+## 8     6 &lt;NA&gt;     NA           12          20
+## 9     7 &lt;NA&gt;     NA            3          15</code></pre>
+<hr />
+<p><strong>Pause here to interpret the above code and output</strong></p>
+<ul>
+<li>How could we translate the above code into English? Physically write it out in your own words before looking at the solution.</li>
+</ul>
+<div class="solution">
+<button>
+Solution
+</button>
+<p>Take the <code>subject</code> data frame and the <code>exp</code> data frame and join them by the <code>id</code> column. Keep all the <code>exp</code> information and only keep information from <code>subject</code> if there is a match in <code>exp</code>.</p>
+</div>
+<ul>
+<li>Which participant had the lowest night-time social media use score? <input class='solveme nospaces' size='1' data-answer='["7"]'/></li>
+</ul>
+<hr />
+</div>
+<div id="inner_join" class="section level3">
+<h3><code>inner_join()</code></h3>
+<p>An <code>inner_join()</code> returns all the rows that have a match in the other table. The most important part of an inner join is that unmatched rows are <strong>not</strong> included in the result. This means that generally inner joins are usually not appropriate for use in analysis because it’s too easy to lose observations.</p>
+<div class="figure">
+<img src="inner-join.gif" />
+
+</div>
+<pre class="r"><code>inner_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##      id sex     age social_score sleep_score
+##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1     2 m        15           10           9
+## 2     3 f        16           18           5
+## 3     4 f        40           21           4
+## 4     4 f        40           23          15
+## 5     5 f        58            9           6
+## 6     5 f        58           11          10</code></pre>
+<hr />
+<p><strong>Pause here to interpret the above code and output</strong></p>
+<ul>
+<li>How could you translate this code into English? Physically write it out in your own words before looking at the solution.</li>
+</ul>
+<div class="solution">
+<button>
+Solution
+</button>
+<p>Take <code>subject</code> and <code>exp</code> and join these tables by the <code>id</code> column. Keep all the rows that have a match in the other table.</p>
+</div>
+<ul>
+<li>True or False? Participant 7 completed the questionnaires but did not provide demographic data <select class='solveme' data-answer='["TRUE"]'> <option></option> <option>TRUE</option> <option>FALSE</option></select> <br></li>
+<li>True or False? . More females than males provided demographic information and completed both questionnaires <select class='solveme' data-answer='["TRUE"]'> <option></option> <option>TRUE</option> <option>FALSE</option></select> <br></li>
+</ul>
+<hr />
+</div>
+<div id="full_join" class="section level3">
+<h3><code>full_join()</code></h3>
+<p>A <code>full_join()</code> keeps absolutely everything from <strong>both</strong> tables. If a row doesn’t have a match in the other table, the other table’s column values are set to NA.</p>
+<div class="figure">
+<img src="full-join.gif" />
+
+</div>
+<pre class="r"><code>full_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<pre><code>## # A tibble: 10 x 5
+##       id sex     age social_score sleep_score
+##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+##  1     1 m        11           NA          NA
+##  2     2 m        15           10           9
+##  3     3 f        16           18           5
+##  4     4 f        40           21           4
+##  5     4 f        40           23          15
+##  6     5 f        58            9           6
+##  7     5 f        58           11          10
+##  8     6 &lt;NA&gt;     NA           11          13
+##  9     6 &lt;NA&gt;     NA           12          20
+## 10     7 &lt;NA&gt;     NA            3          15</code></pre>
+<hr />
+<p><strong>Pause here and interpret the above code and output</strong></p>
+<ul>
+<li>How could you translate this code into English? Physically write it out in your own words before looking at the solution.</li>
+</ul>
+<div class="solution">
+<button>
+Solution
+</button>
+<p>Take <code>subject</code> and <code>exp</code> and join these tables by the <code>id</code> column. Keep all information from both tables.</p>
+</div>
+<ul>
+<li><p>How many people <strong>did not</strong> provide demographic information? <input class='solveme nospaces' size='1' data-answer='["3"]'/></p></li>
+<li><p>How many people <strong>did not</strong> answer both questionnaires? <input class='solveme nospaces' size='1' data-answer='["1"]'/></p></li>
+</ul>
+<hr />
+<p>You now have some understanding of mutating joins! Time to move on to <strong>filtering joins</strong>.</p>
+</div>
+</div>
+<div id="filtering-joins" class="section level2">
+<h2>Filtering Joins</h2>
+<p><strong>Filtering</strong> joins filter observations from one data frame based on <strong>whether or not</strong> they match an observation in the other table.</p>
+<div id="semi_join" class="section level3">
+<h3><code>semi_join()</code></h3>
+<p>A <code>semi_join()</code> returns all rows from the left table where there are matching values in the right table, keeping just columns from the left table.</p>
+<p><strong>Unlike an <code>inner_join()</code>, a <code>semi_join()</code> will never duplicate the rows in the left table if there is more than one maching row in the right table</strong>.</p>
+<div class="figure">
+<img src="semi-join.gif" />
+
+</div>
+<pre class="r"><code>semi_join(subject,exp, by = &quot;id&quot;)</code></pre>
+<pre><code>## # A tibble: 4 x 3
+##      id sex     age
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     2 m        15
+## 2     3 f        16
+## 3     4 f        40
+## 4     5 f        58</code></pre>
+<p><strong>Important:</strong> Order matters in a <code>semi_join()</code>! Change the order of <code>subject</code> and <code>exp</code> in the above code. What do you notice?</p>
+</div>
+</div>
+<div id="anti_join" class="section level2">
+<h2><code>anti_join()</code></h2>
+<p>An <code>anti_join()</code> returns all rows from the left table where there are <strong>not</strong> matching values in the right table, keeping just columns from the left table.</p>
+<div class="figure">
+<img src="anti-join.gif" />
+
+</div>
+<pre class="r"><code>anti_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<pre><code>## # A tibble: 1 x 3
+##      id sex     age
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1 m        11</code></pre>
+<p><strong>Important:</strong> Order also matters in an <code>anti_join()</code>. Have a go at changing the order of the tables in the code above. What do you notice?</p>
+</div>
+<div id="binding-joins" class="section level2">
+<h2>Binding Joins</h2>
+<p>Although mutating and filtering joins are the main joins you will come across, there are two <strong>binding joins</strong> you might see from time to time: <code>bind_rows()</code> and <code>bind_cols()</code>.</p>
+<div id="bind_rows" class="section level3">
+<h3><code>bind_rows()</code></h3>
+<p><code>bind_rows()</code> combines the rows of two tables.</p>
+<p>Let’s add in some subject data to our original data frame.</p>
+<pre class="r"><code>new_subjects &lt;- tibble(
+  id = seq(6, 9),
+  sex = c(&quot;m&quot;, &quot;m&quot;, &quot;f&quot;, &quot;f&quot;),
+  age = c(12, 16, 42, 50)
+)
+
+bind_rows(subject, new_subjects)</code></pre>
+<pre><code>## # A tibble: 9 x 3
+##      id sex     age
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1 m        11
+## 2     2 m        15
+## 3     3 f        16
+## 4     4 f        40
+## 5     5 f        58
+## 6     6 m        12
+## 7     7 m        16
+## 8     8 f        42
+## 9     9 f        50</code></pre>
+<p>What we have done here is make a new data frame which has sex and age data for four additional participants. We have then combined our new data frame, <code>new_subjects</code>, with our existing data frame <code>subject</code> to give us demographic information for nine participants in total.</p>
+<p>The columns just have to have the same names, they don’t have to be in the same order. Any columns that differ between the two tables will just have NA values for entries from the other table. If a row is duplicated between the two tables, the row will also be duplicated in the resulting table.</p>
+</div>
+<div id="bind_cols" class="section level3">
+<h3><code>bind_cols()</code></h3>
+<p>You can merge two tables with the same number of rows using <code>bind_cols()</code>.</p>
+<p><strong>This is only useful if the two tables have their rows in the exact same order</strong>.</p>
+<p>The only advantage over a <code>left_join()</code> is when the tables don’t have any IDs to join by and you have to rely solely on their order.</p>
+<pre class="r"><code>new_info &lt;- tibble(
+  nationality = c(&quot;Scottish&quot;, &quot;Scottish&quot;, &quot;Irish&quot;, &quot;English&quot;, &quot;Welsh&quot;)
+)
+
+bind_cols(subject, new_info)</code></pre>
+<pre><code>## # A tibble: 5 x 4
+##      id sex     age nationality
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;      
+## 1     1 m        11 Scottish   
+## 2     2 m        15 Scottish   
+## 3     3 f        16 Irish      
+## 4     4 f        40 English    
+## 5     5 f        58 Welsh</code></pre>
+<hr />
+<p>We have now covered a range of <strong>join verbs</strong> from three different families: mutating, filtering, and binding. Next, we’ll move onto <strong>set operations</strong></p>
+<hr />
+</div>
+</div>
+
+<script>
+
+/* update total correct if #total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("correct").length + " of " +
+      document.getElementsByClassName("solveme").length + " correct";
+  }
+}
+
+/* solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "");
+  }
+  
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("correct");
+  } else {
+    cl.remove("correct");
+  }
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+  
+  /* set up solveme inputs */
+  var solveme = document.getElementsByClassName("solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+    
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+    
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  update_total_correct();
+}
+
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

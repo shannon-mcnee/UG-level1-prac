@@ -9,6 +9,8 @@ navbar:
       href: Setting_up.html
     - text: "Introduction to Tidyverse and Data Visualisation" 
       href: Intro_Tidyverse.html
+    - text: "Data Relations"
+      href: Data_Relations.html
 output:
   html_document:
     css: webex.css
