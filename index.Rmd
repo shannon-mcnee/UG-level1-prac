@@ -14,7 +14,7 @@ The aim of this resource is to provide you with hints, tips, and support based o
 
 [Setting Up](Setting_up.html) introduces you to the R environment, different file types, and teaches you how to resolve common set up errors.
 
-[Introduction to Tidyverse and Data Visualisation](Intro_Tidyverse.html) introduces you to the R package `tidyverse`, highlighting how we can use the 'Wickham Six' to make data analysis enjoyable and produce beautiful data visualisations. 
+[Introduction to Tidyverse and Data Visualisation](Intro_Tidyverse.html) introduces you to the R package `tidyverse`, highlighting how we can use the 'Wickham Six' to make data analysis enjoyable, effective, and fun!
 
 You can then build upon your knowledge of `tidyverse` verbs in [Data Relations](Data_Relations.html). 
 
