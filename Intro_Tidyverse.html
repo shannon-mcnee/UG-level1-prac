@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Introduction to Tidyverse and Data Visualisation</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="webex.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Level One Psychology Practical Support</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Setting_up.html">Setting Up</a>
+</li>
+<li>
+  <a href="Intro_Tidyverse.html">Introduction to Tidyverse and Data Visualisation</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Introduction to Tidyverse and Data Visualisation</h1>
+
+</div>
+
+
+<p>In an ideal world, we would conduct our research, collect our data, and then analyse our data using R as our tool. But, just like learning and using any language, it’s often not that straight forward!</p>
+<p>Data can be messy and often times we need to clean our data before we can make any sense of it.</p>
+<p><code>tidyverse</code> can help us <strong>load</strong>, <strong>clean</strong>, and <strong>reshape</strong> data so that it is in the correct format for data analysis.</p>
+<div id="what-is-tidyverse" class="section level2">
+<h2>What is <code>tidyverse</code>?</h2>
+<p><code>tidyverse</code> is a collection of R packages with a common design philosophy, grammar, and data structure that makes analysis faster, easier, and fun.</p>
+<p>One of the key underlying structures of <code>tidyverse</code> is that data structures follow a tidy format:</p>
+<ol style="list-style-type: decimal">
+<li>Each variable is in a <strong>column</strong> (e.g. name)</li>
+<li>Each observation is a <strong>row</strong> (e.g. each individual name is on its on row)</li>
+<li>Each value is a <strong>cell</strong> (e.g. each individual name is contained in its own cell)</li>
+</ol>
+<p>If you make sure your data is tidy, you’ll spend less time rummaging through rubbish on your research path and spend more time working on your all important analysis!</p>
+</div>
+<div id="the-wickham-six" class="section level2">
+<h2>The Wickham Six</h2>
+<p>Hadley Wickham, a driving force behind <code>tidyverse</code>, argues that 90% of data analysis can be reduced to operations which can be described by six English verbs.</p>
+<ul>
+<li><code>select()</code></li>
+<li><code>group_by()</code></li>
+<li><code>filter()</code></li>
+<li><code>mutate()</code></li>
+<li><code>arrange()</code></li>
+<li><code>summarise()</code></li>
+</ul>
+<p>Other verbs which are also really useful, include:</p>
+<ul>
+<li><code>gather()</code></li>
+<li><code>spread()</code></li>
+<li><code>separate()</code></li>
+</ul>
+<p>This tutorial will talk through these verb functions one-by-one in order to demonstrate how they can all be used to clean up a messy dataset. Once we’ve cleaned this data, we will then be in the position to create a beautiful data visualisation!</p>
+<hr />
+<p>Don’t worry if this doesn’t all make sense right away. Learning R takes time and practice. We do not expect you to understand all of this from day one. You can revisit this resource at any time.</p>
+<hr />
+</div>
+<div id="getting-set-up" class="section level2">
+<h2>Getting Set Up</h2>
+<p>Before we can start cleaning our data, we need to set up our environment. To do so, follow the steps below:</p>
+<ol style="list-style-type: decimal">
+<li>Open up a new .R file (you can use a .Rmd file, but if you are just getting started with coding I would recommend sticking to .R for now)</li>
+<li>Save this file somewhere sensible and give it a memorable name (I would suggest making a folder such as “Level One Practical” to save all of your files in)</li>
+<li>Set your working directory to where you have this file saved</li>
+<li>Download the <a href="eye_descriptions.csv">data</a> we will be working with and save it in the same folder as your .R file</li>
+<li>At the top of your .R file, type: <code>library(tidyverse)</code>. If you are using your own device and have not yet installed tidyverse, go back to <a href="Setting_up.html">Setting Up</a></li>
+<li>Hit <strong>Run</strong> at the top right hand side of your script.</li>
+</ol>
+<p>Great! Now we are ready to <strong>load in</strong> our data.</p>
+</div>
+<div id="read_csv" class="section level2">
+<h2><code>read_csv()</code></h2>
+<p>To load in our data, we can use a function called <code>read_csv()</code>. It takes an <strong>input argument</strong> of the .csv file that we would like to load in, and the <strong>output</strong> is that we will have this data ready to use in our environment.</p>
+<p>Type the following line of code on a new line your script (i.e. underneath <code>library(tidyverse)</code>).</p>
+<pre class="r"><code>eye_data &lt;- read_csv(&quot;eye_descriptions.csv&quot;) </code></pre>
+<p>We can read this line of code from the right hand side of the arrow, to the left hand side. Here, you are telling R: load in the .csv file “eye_descriptions.csv” and store this file in a variable called <code>eye_data</code>. Now, run this line of code by hitting <strong>Run</strong>.</p>
+<p>You should now have a variable called <code>eye_data</code> in your <strong>Global Environment</strong> at the top right hand side of your screen.</p>
+<p>We can have a look at this data to see what we’re working with. Down in your console (remember, your console is like your notepad to scribble on), type in: <code>View(eye_data)</code>.</p>
+<p>Here, we have loaded in a .csv file which contains 220 participants descriptions of 50 different eye regions (columns t1 through to t50). There’s a lot of information here, we have: user_id (a unique, anonymised identification number), the participant’s sex, their age, and their description of each eye region (t1:t50).</p>
+<p>If we have a look at these descriptions, we can see that there’s a lot of variation. Some participants provided one word descriptions whilst others provided multiple word descriptions. Some wrote their descriptions in lower case, whilst others wrote in upper case and used punctuation (e.g. commas, hyphens, slashes). As a result, this data isn’t <strong>tidy</strong>.</p>
+<p>Although each row belongs to a unique subject id, each face id has its own column rather than being grouped with descriptions spread across these 50 columns. This data is arranged in what is called WIDE format. Variables are spread across columns.</p>
+<p>Let’s have a go at tidying this up by gathering our face_ids into one column in order to get our data into LONG format.</p>
+</div>
+<div id="gather" class="section level2">
+<h2><code>gather()</code></h2>
+<p><code>gather()</code> takes multiple columns and <strong>collapses</strong> them so that each unique variable has it’s own column.</p>
+<pre class="r"><code>gathered_eyes &lt;- gather(eye_data, &quot;face_id&quot;, &quot;description&quot;, t1:t50)</code></pre>
+<p>Let’s translate this line of code into English. Here, you are telling R: take the <code>eye_data</code> dataset (input argument 1), create a <strong>key</strong> column called “face_id” (input argument 2), and a <strong>value</strong> column called “description” (input argument 3), by <strong>gathering</strong> columns t1 <strong>through to</strong> t50 (input argument 4).</p>
+<p>All this means is that R is taking columns t1 to t50, and instead of each face id having its own column (e.g. t1, t2, t3…), the ids are now <strong>gathered</strong> into <strong>one</strong> column: face_id. This is our <strong>key</strong> column. Similarly, the descriptions for each eye region have now been <strong>gathered</strong> into <strong>one</strong> column: description. This is our <strong>value</strong> column.</p>
+<p>Type <code>View(gathered_eyes)</code> into your console. See how much better our data looks already? Our face ids are in one column (face id) rather than being spread across 50. Now, each row has one observation - meaning that we firstly have all participants descriptions of face t1, followed by all participants descriptions of face t2, and so on…</p>
+<p>But we’re not done yet! Some participants didn’t just provide one description per face. In our description column, we’re met with lots of extra characters that are going to throw a wrench into our data analysis (e.g. hyphens, commas, slashes). Luckily, though, there’s a way around this.</p>
+</div>
+<div id="separate" class="section level2">
+<h2><code>separate()</code></h2>
+<p>Separate allows us to split apart a given column into multiple columns. Say we’re interested in breaking apart the descriptions that people have given into three different columns, one per description.</p>
+<pre class="r"><code>separated_eyes &lt;- separate(gathered_eyes, description, c(&quot;d1&quot;,&quot;d2&quot;,&quot;d3&quot;), sep = &quot;(,|;|\\/)+&quot;, extra = &quot;merge&quot;)</code></pre>
+<pre><code>## Warning: Expected 3 pieces. Missing pieces filled with `NA` in 10645
+## rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+## 20, ...].</code></pre>
+<p>Here, you are telling R: take the data frame <code>gathered_eyes</code> (input argument 1), and <strong>separate</strong> the <code>description</code> column (input argument 2), into three separate columns (input argument 3). Separate these columns by the following punctuation (input argument 4), and if there are any extra forms of punctuation - just merge them (input argument 5).</p>
+<p>Have a look at the data by using <code>View(separated_eyes)</code> in your console. Do you notice something? <strong>Our data is back into wide format because we separated the <code>description</code> column into three separate columns</strong>. Remember, we don’t want this format because it isn’t <strong>tidy</strong>.</p>
+<p>But it’s fine, because we can just use <code>gather()</code> again!</p>
+<pre class="r"><code>gathered_separated_eyes &lt;- gather(separated_eyes,&quot;desc_n&quot;, &quot;description&quot;, d1:d3)</code></pre>
+<p>However, not all participants provided three descriptions for each eye region. Missing data is represented by <code>NA</code>. We also have some nonsense descriptions (e.g. “f” and “.”). So, we need to <code>filter()</code> out these descriptions.</p>
+</div>
+<div id="filter" class="section level2">
+<h2><code>filter()</code></h2>
+<p>Filter finds rows/cases where conditions are true. Here, let’s use filter to get rid of NAs and any nonsense descriptions.</p>
+<p>The ! inverts a statement, so in the case of !is.na() we are telling R to keep an item as long as it “is not NA”.</p>
+<pre class="r"><code>filtered_eyes &lt;- filter(gathered_separated_eyes,
+                        !is.na(description),
+                        nchar(description) &gt; 1)</code></pre>
+<p>Are we done? Let’s have a look…</p>
+<p>We still have some white space around descriptions as well as some descriptions in capitals. Here’s where <code>mutate()</code> comes in.</p>
+</div>
+<div id="mutate" class="section level2">
+<h2><code>mutate()</code></h2>
+<p><code>mutate()</code> helps to transform existing columns in order to make the data easier to work with.</p>
+<pre class="r"><code>mutate_eyes &lt;- mutate(filtered_eyes,
+                      description = trimws(description), 
+                      description = tolower(description))</code></pre>
+<p>Okay, so there’s quite a bit to take in here so let’s break it down into English. Here, we are telling R: take the <code>filtered_eyes</code> dataset, go to the description column and remove any white space around the description (<code>trimws(description)</code>) and also make all of the descriptions lower case (<code>tolower(description)</code>). Remember to use <code>View(name of variable)</code> in your console to have a look at what the function has done to your data!</p>
+<hr />
+<p>Pause here and test your knowledge of the verbs you have learned so far!</p>
+<ul>
+<li>What does <code>gather()</code> do?</li>
+</ul>
+<p><select class='solveme' data-answer='["takes multiple columns and collapses them together"]'> <option></option> <option>splits a column into multiple columns</option> <option>removes information that we’re not interested in</option> <option>transforms existing columns</option> <option>takes multiple columns and collapses them together</option></select></p>
+<ul>
+<li>What does <code>separate()</code> do?</li>
+</ul>
+<p><select class='solveme' data-answer='["splits a column into multiple columns"]'> <option></option> <option>splits a column into multiple columns</option> <option>removes information that we’re not interested in</option> <option>transforms existing columns</option> <option>takes multiple columns and collapses them together</option></select></p>
+<ul>
+<li>What does <code>filter()</code> do?</li>
+</ul>
+<p><select class='solveme' data-answer='["removes information that we are not interested in"]'> <option></option> <option>splits a column into multiple columns</option> <option>transforms existing columns</option> <option>takes multiple columns and collapses them together</option> <option>removes information that we are not interested in</option></select></p>
+<ul>
+<li>What does <code>mutate()</code> do?</li>
+</ul>
+<p><select class='solveme' data-answer='["transforms existing columns"]'> <option></option> <option>splits a column into multiple columns</option> <option>removes information that we’re not interested in</option> <option>transforms existing columns</option> <option>takes multiple columns and collapses them together</option></select></p>
+<hr />
+<p>So far, we have used <code>gather()</code>, <code>separate()</code>, <code>filter()</code>, and <code>mutate()</code> to help get our data into a tidy, useable format. Now, we are in the position to find out something interesting about our data! <strong>What are the top 10 most common descriptions of eye regions?</strong></p>
+</div>
+<div id="group_by" class="section level2">
+<h2><code>group_by()</code></h2>
+<p><code>group_by()</code> takes an existing data frame and turns it into a <strong>grouped</strong> data frame so that all later operations are performed on each separate group.</p>
+<p>Let’s try grouping our data by description so that we can then find out <strong>how many</strong> of each unique description we have.</p>
+<pre class="r"><code>grouped_eyes &lt;- group_by(mutate_eyes, description)</code></pre>
+<p>Have a look at this data frame using <code>View(grouped_eyes)</code> down in your console. You’ll notice that <code>grouped_eyes</code> just looks identical to your previous data frame, <code>mutate_eyes</code>. On the surface, <code>group_by</code> really doesn’t do much, but if we use <code>head(grouped_eyes)</code> in our console, you should see the following: <img src="group_by.png" /></p>
+<p>Notice it says, <strong>Groups: description</strong>. This means that the data is now grouped together by description. This grouping then allows us to carry out our next step, <strong>calculating how many of each unique description we have</strong>.</p>
+</div>
+<div id="summarise" class="section level2">
+<h2><code>summarise()</code></h2>
+<p>Summarise takes a data table and provides summary statistics (in this case the total number of each description) in a new table.</p>
+<pre class="r"><code>sum_eyes &lt;- summarise(grouped_eyes, n = n())</code></pre>
+<p>Here, we are telling R to <strong>summarise</strong> the <code>grouped_eyes</code> data frame by creating a new column <code>n</code> which is the <strong>sum</strong> of each unique description.</p>
+<p>Now we actually have some interesting information about our data! We can see how common each description is.</p>
+<p>Let’s see what the top 10 descriptions are…</p>
+</div>
+<div id="arrange" class="section level2">
+<h2><code>arrange()</code></h2>
+<p>We can use the <code>arrange()</code> function to sort our descriptions in descending order (most common description to least common). We can then use <code>filter()</code> to only keep rows 1:10 to give us our top 10 most common descriptions.</p>
+<pre class="r"><code>arranged_eyes &lt;- arrange(sum_eyes, desc(n)) 
+
+top_10_descriptions &lt;- filter(arranged_eyes, row_number() &lt; 11)
+
+knitr::kable(top_10_descriptions)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">description</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">brown</td>
+<td align="right">364</td>
+</tr>
+<tr class="even">
+<td align="left">blue</td>
+<td align="right">314</td>
+</tr>
+<tr class="odd">
+<td align="left">small</td>
+<td align="right">270</td>
+</tr>
+<tr class="even">
+<td align="left">pretty</td>
+<td align="right">259</td>
+</tr>
+<tr class="odd">
+<td align="left">big</td>
+<td align="right">239</td>
+</tr>
+<tr class="even">
+<td align="left">round</td>
+<td align="right">229</td>
+</tr>
+<tr class="odd">
+<td align="left">sad</td>
+<td align="right">224</td>
+</tr>
+<tr class="even">
+<td align="left">tired</td>
+<td align="right">217</td>
+</tr>
+<tr class="odd">
+<td align="left">dark</td>
+<td align="right">190</td>
+</tr>
+<tr class="even">
+<td align="left">average</td>
+<td align="right">174</td>
+</tr>
+</tbody>
+</table>
+<p>Firstly, we have created the variable <code>arranged_eyes</code> which is <code>sum_eyes</code> now <strong>arranged</strong> in <strong>descending</strong> (<code>desc()</code>) order based on the column <code>n</code>. The default is to arrange by ascending order. So, our data is now organised from most common descriptor, to least common.</p>
+<p>Then, we created <code>top_10_descriptions</code>. We used <code>filter()</code> here on <code>arranged_eyes</code> by <strong>keeping</strong> only the row numbers that are less than 11 (i.e. 1 to 10 to give us the top 10 descriptors).</p>
+<p>The last line of code just helps me make the table that you see below.</p>
+<hr />
+<p>So from that expansive, messy dataset we now have the 10 most common descriptors provided by participants across 50 different faces!</p>
+<p>Let’s pause here and test our knowledge on <code>group_by()</code>, <code>summarise()</code>, and <code>arrange()</code>.</p>
+<ul>
+<li>What does <code>group_by()</code> do?</li>
+</ul>
+<p><select class='solveme' data-answer='["groups data frames based on a specific column so that all later operations are carried out on a group basis"]'> <option></option> <option>provides summary statistics of an existing dataframe</option> <option>organises information in ascending or descending order</option> <option>transforms existing columns</option> <option>groups data frames based on a specific column so that all later operations are carried out on a group basis</option></select></p>
+<ul>
+<li>What does <code>summarise()</code> do?</li>
+</ul>
+<p><select class='solveme' data-answer='["provides summary statistics of an existing dataframe"]'> <option></option> <option>provides summary statistics of an existing dataframe</option> <option>organises information in ascending or descending order</option> <option>takes multiple columns and collapses them so that each unique variable has it’s own column</option> <option>groups data frames based on a specific column so that all later operations are carried out on a group basis</option></select></p>
+<ul>
+<li>What does <code>arrange()</code> do?</li>
+</ul>
+<p><select class='solveme' data-answer='["organises information in ascending or descending order"]'> <option></option> <option>provides summary statistics of an existing dataframe</option> <option>organises information in ascending or descending order</option> <option>removes information that we’re not interested in and keeps information that we are interested in</option> <option>groups data frames based on a specific column so that all later operations are carried out on a group basis</option></select></p>
+<hr />
+<p>Great - now we are in the position to create an eye-catching data visualisation to communicate our findings!</p>
+</div>
+<div id="visualising-data-with-ggplot2" class="section level2">
+<h2>Visualising data with <code>ggplot2</code></h2>
+<p>Remember <code>tidyverse</code> is a “meta-package” meaning that it is made up of lots of other packages. One of those packages is <code>ggplot2</code> and its associated function <code>ggplot()</code>.</p>
+<p>Just like any other function, <code>ggplot()</code> takes <strong>input arguments</strong> and gives an <strong>output</strong>.</p>
+<p>The first input argument of <code>ggplot()</code> is the <strong>data</strong> that we want to visualise. We want to visualise the top 10 most common descriptors of eye regions, so the data frame we will be using is <code>top_10_descriptions</code>.</p>
+<p>Then, we tell R how we want our visualisation to look. For example, what is our X and Y axis? What colour do we want our visualisation to be? We can specificy this by wrapping our information in the function <code>aes()</code> which means aesthetics. Here, we are trying to visualise the <strong>descriptor</strong> and <strong>how common</strong> a given descriptor is. It would also be nice to have a different colour for each descriptor.</p>
+<p>An important point to highlight about <code>ggplot()</code> is that it is <strong>layered</strong>. Try running the below code and seeing what pops up in your plot window to the right hand side of your console.</p>
+<pre class="r"><code>plot_1 &lt;- ggplot(top_10_descriptions, aes(x = description, y = n, fill = description))
+
+plot_1</code></pre>
+<p><img src="Intro_Tidyverse_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>You should see a boring, grey square with the descriptor names on the X axis and ‘n’ on the Y axis. It’s boring and dull because we haven’t told R <strong>what kind</strong> of data visualisation to use yet. We do this by specifying a <strong>geom object</strong> which is a fancy name for the type of visualisation we want to use.</p>
+<hr />
+<p>If I tried to cover all of the possible data visualisations you can create in R, we would be here all day. Here are some of my favourite resources on the different types of data visualisation that R is capable of!</p>
+<ul>
+<li><a href="https://psyteachr.github.io/hack-your-data/quant-data-vis.html">Quantitative Data Visualisation</a> by one of our very own GTA’s, <a href="https://twitter.com/JackEdTaylor">Jack Taylor</a></li>
+<li><a href="https://psyteachr.github.io/hack-your-data/index.html">Your Data and Visualisations</a> by <a href="https://twitter.com/menimagerie?lang=en">Lovisa Sundin</a></li>
+<li><a href="https://www.data-to-viz.com/">From Data to Viz</a> by <a href="https://twitter.com/r_graph_gallery?lang=en">Yan Holtz</a> and <a href="http://www.conor.fr/indexEN.html">Conor Healy</a></li>
+</ul>
+<hr />
+<p>Here, what we are trying to do is show <strong>how many times</strong> each unique descriptor was provided for an eye region across participants. One of the best ways to show this is through a simple column plot, through using <code>geom_col()</code> which is our <strong>geom object</strong> - the type of data visualisation we want to use. To add this to our existing base layer, we do the following:</p>
+<pre class="r"><code>plot_2 &lt;- ggplot(top_10_descriptions, aes(x = description, y = n, fill = description)) +
+  geom_col()
+
+plot_2</code></pre>
+<p><img src="Intro_Tidyverse_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Look at the difference!</p>
+<p>Now, we have a bright and colourful visualisation which tells us <strong>how many times</strong> each of the top 10 descriptors was provided by participants. However, I just want to clean this up a bit because there’s a few things I don’t like about it.</p>
+<p>Firstly, it’s really annoying me that the order of the bars is alphabetical and not based on the most common descriptor to the least common descriptor. Also, the legend on the right hand side of the graph is redundant. We already have the names of the descriptor on the X axis, so we can get rid of that. I’d also like to make the colour of our plot a bit softer and I’d like to give the plot a name.</p>
+<p>To fix my first issue, I’m going to have to change my data up just a little bit. At the moment, in <code>top_10_descriptions</code>, <code>description</code> is a <strong>character</strong> variable. If I want my graph to be ordered from most common to least common, I need to change <code>description</code> to a <strong>factor</strong> so that my descriptors are understood as <strong>levels</strong>. I can use <code>mutate()</code> to do this.</p>
+<pre class="r"><code>top_10_eyes &lt;- mutate(top_10_descriptions, description = factor(description, levels = description)) </code></pre>
+<p>Now, I can replot my data and go about changing the aesthetics of my visualisation.</p>
+<p>Let’s break down the changes…</p>
+<p>In the first line, I tell R that I want to use <code>top_10_eyes</code> (remember this is the name of our data now that we’ve changed <code>description</code> from a <strong>character</strong> to a <strong>factor</strong>) and I want the X axis of my figure to be <code>description</code>, and my Y axis to be <strong>how common</strong> the descriptor was. I also want each descriptor to be represented by a different colour: <code>fill = descriptor</code>.</p>
+<p>I then tell R that I want to use a column plot by using the <strong>geom object</strong> <code>geom_col()</code>.</p>
+<p>I get rid of the legend by stipulating <code>FALSE</code> in the <code>show.legend</code> argument - the default of this argument is <code>TRUE</code> which means the legend shows on the plot.</p>
+<p>To change the colour of the plot, I use a function called <code>scale_fill_brewer()</code>. Type <code>?scale_fill_brewer()</code> into your console to find out more about the different kinds of colour palettes you can use!</p>
+<p>I then give the plot a name by using the function <code>ggtitle()</code></p>
+<pre class="r"><code>eye_plot &lt;- ggplot(top_10_eyes, aes(x = description, y = n, fill = description)) + 
+  geom_col(show.legend = FALSE) + 
+  scale_fill_brewer(palette = &quot;Spectral&quot;) +
+  ggtitle(&quot;Top 10 descriptors for eye region expressions&quot;)
+  
+eye_plot</code></pre>
+<p><img src="Intro_Tidyverse_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>And there you have it! Through using powerful tools within <code>tidyverse</code> we have been able to tidy our messy dataset in order to create a clear, accessible visualisation which provides us with interesting information about our data.</p>
+<hr />
+<p>This a lot of information to process so I recommend taking time to go over this guide to make sure you understand how all of these common <code>tidyverse</code> verbs work.</p>
+<p>Once you feel comfortable with the above information, take a look below to see how all of the above steps can be stream-lined to make data cleaning and analysis in R extremely powerful and effective!</p>
+<hr />
+</div>
+<div id="using-pipes-to-tell-a-data-story" class="section level2">
+<h2>Using pipes to tell a data story</h2>
+<p>Notice that we started off with a variable called eye_data, and then it became gathered_eyes,and then separated_eyes, and then filtered_eyes and so on.</p>
+<p>Even though all of the steps we just carried out are important - it is key to point out that these are intermediate steps that get us from our messy original dataset to our clean, tidy, top 10. It would be much nicer not to have to do all of this record keeping, and it would make the code much more readable and powerful.</p>
+<p>Just like in spoken and written language, our verbs can be tied together to tell a story.</p>
+<p>The pipe operator <code>%&gt;%</code> can be read in English as “and then”. This operator allows us to string functions together to form a single, powerful pipeline. <code>%&gt;%</code> essentially passes each step of our data cleaning and analysis into the next step, without the need to make loads of different data frames to accomodate every single change we make.</p>
+<pre class="r"><code>eyes &lt;- read_csv(&quot;eye_descriptions.csv&quot;) %&gt;%
+  gather(&quot;face_id&quot;, &quot;description&quot;, t1:t50) %&gt;%
+  separate(description,
+           c(&quot;d1&quot;,&quot;d2&quot;,&quot;d3&quot;),
+           sep = &quot;(,|;|\\/)+&quot;,
+           extra = &quot;merge&quot;) %&gt;%
+  gather(&quot;desc_n&quot;, &quot;description&quot;, d1:d3) %&gt;%
+  filter(!is.na(description), nchar(description) &gt; 1) %&gt;%
+  mutate(description = trimws(description),
+         description = tolower(description)) %&gt;%
+  group_by(description) %&gt;%
+  summarise(n = n()) %&gt;%
+  arrange(desc(n)) %&gt;%
+  filter(row_number() &lt; 11)
+
+knitr::kable(eyes)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">description</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">brown</td>
+<td align="right">364</td>
+</tr>
+<tr class="even">
+<td align="left">blue</td>
+<td align="right">314</td>
+</tr>
+<tr class="odd">
+<td align="left">small</td>
+<td align="right">270</td>
+</tr>
+<tr class="even">
+<td align="left">pretty</td>
+<td align="right">259</td>
+</tr>
+<tr class="odd">
+<td align="left">big</td>
+<td align="right">239</td>
+</tr>
+<tr class="even">
+<td align="left">round</td>
+<td align="right">229</td>
+</tr>
+<tr class="odd">
+<td align="left">sad</td>
+<td align="right">224</td>
+</tr>
+<tr class="even">
+<td align="left">tired</td>
+<td align="right">217</td>
+</tr>
+<tr class="odd">
+<td align="left">dark</td>
+<td align="right">190</td>
+</tr>
+<tr class="even">
+<td align="left">average</td>
+<td align="right">174</td>
+</tr>
+</tbody>
+</table>
+<p>The above gives us <strong>the exact same output</strong> as all of our intermediate steps did! So this little <code>%&gt;%</code> is extremely powerful and saves us so much time and hassle.</p>
+<p>Now, we can pipe <code>eyes</code> into <code>ggplot()</code> so to visualise our data.</p>
+<pre class="r"><code>eyes %&gt;%
+  mutate(description = factor(description, levels = description)) %&gt;%
+  ggplot(aes(description,n, fill = description)) +
+  geom_col(show.legend = FALSE) +
+  scale_fill_brewer(palette = &quot;Spectral&quot;) +
+  ggtitle(&quot;Top 10 descriptors for eye region expressions&quot;)</code></pre>
+<p><img src="Intro_Tidyverse_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Notice that <code>eyes</code> isn’t the first input argument into <code>mutate</code> or <code>ggplot</code> because we have piped this dataset into the chain of functions at the start. R knows what data we are using so we don’t need to specify it whenever we use a function.</p>
+<hr />
+<p>In this tutorial, you have been introducted to the meta-package <code>tidyverse</code> and one of the packages within it, <code>ggplot2</code>. You have been introduced to nine powerful verb functions (though there are many more!) that can help us to clean and analyse our data in a way that is quick, effective, and fun. You have also had a go at producing beautiful and engaging data visualisations.</p>
+<hr />
+<p>If you would like to know more about data visualisation using <code>tidyverse</code> check out <a href="https://psyteachr.github.io/hack-your-data/index.html">Hack Your Data Beautiful</a>.</p>
+<p>This was a postgraduate led workshop which took place in April 2019 that introduced data visualisation in R to <strong>complete beginners</strong>. It was ran by our very own postgraduate students: <a href="https://twitter.com/AnnaHenschel?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Anna Henschel</a>, <a href="https://twitter.com/_r_lai_?lang=en">Rebecca Lai</a>, <a href="https://twitter.com/eolasinntinn?lang=en">Stephanie Allan</a>, <a href="https://twitter.com/carolynbot">Carolyn Saund</a>, <a href="https://twitter.com/menimagerie?lang=en">Lovisa Sundin</a>, <a href="https://twitter.com/JackEdTaylor">Jack Taylor</a> and me, <a href="https://twitter.com/ShannonMcNee2">Shannon McNee</a>.</p>
+</div>
+
+<script>
+
+/* update total correct if #total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("correct").length + " of " +
+      document.getElementsByClassName("solveme").length + " correct";
+  }
+}
+
+/* solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "");
+  }
+  
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("correct");
+  } else {
+    cl.remove("correct");
+  }
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+  
+  /* set up solveme inputs */
+  var solveme = document.getElementsByClassName("solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+    
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+    
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  update_total_correct();
+}
+
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

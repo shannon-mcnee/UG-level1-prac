@@ -177,7 +177,7 @@ Imagine you want to bake some chocolate brownies. You read the recipe and it tel
 
 Functions are structured in the following way:
 
-```{r} 
+```{r, eval = FALSE} 
 
 function_name(argument_1,argument_2,argument_3,...)
 
@@ -185,7 +185,7 @@ function_name(argument_1,argument_2,argument_3,...)
 
 The command (or action) is the thing outside the brackets, and the things that are inside the brackets are **input arguments** (e.g. the things that the action should be executed on). How would this look in our baking analogy? 
 
-```{r}
+```{r, eval = FALSE}
 
 mix(eggs,flour,sugar)
 
@@ -268,7 +268,7 @@ Let's have some practice at interpreting and resolving common errors you are lik
 
 I tried to run this line of code...
 
-```{r}
+```{r, eval = FALSE}
 
 install.packages(tidyverse)
 
@@ -303,7 +303,7 @@ install.packages("tidyverse")
 <br>
 Can you spot why this code...
 
-```{r}
+```{r, eval = FALSE}
 
 library(tidyvere)
 
@@ -333,7 +333,7 @@ library(tidyverse)
 
 How can I fix the code below...
 
-```{r}
+```{r, eval = FALSE}
 
 library(tidyverse
         

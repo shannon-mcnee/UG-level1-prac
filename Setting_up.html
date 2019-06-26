@@ -11,17 +11,20 @@
 
 
 
-<title>Untitled</title>
+<title>Setting Up</title>
 
-<script src="Setting_up_files/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="Setting_up_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="Setting_up_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="Setting_up_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="Setting_up_files/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="Setting_up_files/navigation-1.1/tabsets.js"></script>
-<link href="Setting_up_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="Setting_up_files/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -261,6 +264,90 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -268,6 +355,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -305,7 +402,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Untitled</h1>
+<h1 class="title toc-ignore">Setting Up</h1>
 
 </div>
 
@@ -502,57 +599,71 @@ Solution
 <p>An error message isn’t something to get anxious about, you haven’t broken the computer! Error messages are simply R’s way of letting you know that something isn’t quite right and it is the only way R can bring problems to your attention. R is genuinely trying to help you!</p>
 <p>However, error messages can be frustrating. So, it’s important to develop skills and confidence in understanding and interpreting error messages so you can resolve them quickly and effectively.</p>
 <p>Let’s have some practice at interpreting and resolving common errors you are likely to experience during the set up of your R environment.</p>
+<p><br></p>
 <div id="object-package-name-not-found" class="section level3">
 <h3>“Object <code>package name</code> not found”</h3>
+<p><br></p>
 <p>I tried to run this line of code…</p>
 <pre class="r"><code>install.packages(tidyverse)</code></pre>
-<p>and got this error…</p>
+<p>and got this error… <br></p>
 <div class="figure">
 <img src="installerror.png" />
 
 </div>
-<p>How can I debug this code?</p>
+<p><br> How can I debug this code? <br></p>
 <div class="solution">
 <button>
 Hint
 </button>
 <p>Have a look at the section on installing packages. Can you spot anything different about the input argument?</p>
 </div>
+<div class="solution">
+<button>
+Solution
+</button>
+<p><br></p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
+</div>
+<p><br></p>
 </div>
 <div id="there-is-no-package-called-package-name" class="section level3">
 <h3>“There is no package called <code>package name</code>”</h3>
-<p>Can you spot why this code…</p>
+<p><br> Can you spot why this code…</p>
 <pre class="r"><code>library(tidyvere)</code></pre>
 <p>…gives me this error?</p>
-<div class="figure">
-<img src="tidyerror.png" />
-
-</div>
+<p><br> <img src="tidyerror.png" /> <br></p>
 <div class="solution">
 <button>
 Hint
 </button>
 <p>R is very particular about spelling. R can’t guess what you mean!</p>
 </div>
+<div class="solution">
+<button>
+Solution
+</button>
 <pre class="r"><code>library(tidyverse) </code></pre>
+</div>
+<p><br></p>
 </div>
 <div id="unexpected-symbol" class="section level3">
 <h3>“Unexpected symbol”</h3>
 <p>How can I fix the code below…</p>
 <pre class="r"><code>library(tidyverse</code></pre>
-<p>…so that I don’t get this error?</p>
-<div class="figure">
-<img src="liberror.png" />
-
-</div>
+<p>…so that I don’t get this error? <br></p>
+<p><img src="liberror.png" /> <br></p>
 <div class="solution">
 <button>
 Hint
 </button>
 <p><img src = "Bob.jpg"></p>
 </div>
+<div class="solution">
+<button>
+Solution
+</button>
 <pre class="r"><code>library(tidyverse)</code></pre>
+</div>
 <p><br></p>
 </div>
 </div>
@@ -562,7 +673,7 @@ Hint
 <p>You can directly call the help menu by typing <code>?name of function/package</code> into your console.</p>
 <hr />
 <p><strong>Great! You now know how the R environment is structured, you are aware of the difference between .R and .Rmd files, and you know how to use functions to load in packages. You have also had a go at resolving some common set up errors.</strong></p>
-<p><strong>We are now ready to begin using tidyverse!</strong></p>
+<p><strong>We are now ready to begin using <code>tidyverse</code>!</strong></p>
 <hr />
 </div>
 
@@ -650,6 +761,8 @@ window.onload = function() {
 </script>
 
 
+</div>
+</div>
 
 </div>
 
