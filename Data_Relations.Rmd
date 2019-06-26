@@ -338,7 +338,7 @@ knitr::kable(semi)
 
 **Important:** Order matters in a `semi_join()`! Change the order of `subject` and `exp` in the above code. What do you notice? 
 
-## `anti_join()`
+### `anti_join()`
 
 An `anti_join()` returns all rows from the left table where there are **not** matching values in the right table, keeping just columns from the left table.
 
