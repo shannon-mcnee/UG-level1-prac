@@ -5,6 +5,10 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Setting Up"
+      href: Setting_up.html
+    - text: "Introduction to Tidyverse and Data Visualisation"
+      href: Intro_Tidyverse.html
 output:
   webex::webex_default:
     theme: cosmo
