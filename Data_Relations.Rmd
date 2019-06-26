@@ -12,7 +12,7 @@ library(webex)
 ```
 
 
-In the previous tutorial, you were introduced to the concept of **tidy data** in which: 
+In the previous tutorial, you were introduced to the concept of **tidy data**. Can you remember what the three principles of tidy data are?  
 
 1. Each variable is in a `r fitb("column")`
 2. Each observation is a `r fitb("row")`
@@ -504,3 +504,4 @@ Well done! You now have an understanding of **data relations** and the various w
 * [Chapter 13: Relational Data](https://r4ds.had.co.nz/relational-data.html) in _R for Data Science_
 
 GIF credit: [Garrick Aden-Buie](https://gist.github.com/gadenbuie)
+
