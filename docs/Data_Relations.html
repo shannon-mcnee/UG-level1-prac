@@ -11,7 +11,7 @@
 
 
 
-<title>Web Exercises</title>
+<title>Data Relations</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -390,6 +390,9 @@ div.tocify {
 <li>
   <a href="Intro_Tidyverse.html">Introduction to Tidyverse and Data Visualisation</a>
 </li>
+<li>
+  <a href="Data_Relations.html">Data Relations</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -402,13 +405,11 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Web Exercises</h1>
+<h1 class="title toc-ignore">Data Relations</h1>
 
 </div>
 
 
-<div id="data-relations" class="section level2">
-<h2>Data Relations</h2>
 <p>In the previous tutorial, you were introduced to the concept of <strong>tidy data</strong> in which:</p>
 <ol style="list-style-type: decimal">
 <li>Each variable is in a <input class='solveme nospaces' size='6' data-answer='["column"]'/></li>
@@ -435,7 +436,6 @@ div.tocify {
 <hr />
 <p>Being able to wrangle your data, manipulate it into different layouts, extract the parts you need, and summarise it, is one of the most important skills we will help you learn in the coming weeks.</p>
 <p>Luckily, R can make this task a lot less painful through the use of <strong>join verbs</strong> and <strong>set operations</strong>.</p>
-</div>
 <div id="join-verbs" class="section level2">
 <h2>Join Verbs</h2>
 <p>There are two main families of join verbs that you will be using over the coming weeks: <strong>mutating</strong> joins and <strong>filtering</strong> joins.</p>
@@ -758,6 +758,78 @@ bind_cols(subject, new_info)</code></pre>
 <hr />
 <p>We have now covered a range of <strong>join verbs</strong> from three different families: mutating, filtering, and binding. Next, we’ll move onto <strong>set operations</strong></p>
 <hr />
+</div>
+</div>
+<div id="set-operations" class="section level2">
+<h2>Set Operations</h2>
+<p><strong>Set operations</strong> treat observations as if they were set elements. Basically, set operations are a nice way of breaking complex <strong>filtering joins</strong> down into simpler pieces. These include:</p>
+<ul>
+<li><code>intersect()</code></li>
+<li><code>union()</code></li>
+<li><code>setdiff()</code></li>
+</ul>
+<div id="intersect" class="section level3">
+<h3><code>intersect()</code></h3>
+<p><code>intersect()</code> returns all rows in two tables that <strong>match exactly</strong>. The order of columns doesn’t matter.</p>
+<div class="figure">
+<img src="intersect.gif" />
+
+</div>
+<pre class="r"><code>new_subjects &lt;- tibble(
+  id = seq(4, 9),
+  age = c(40, 58, 16, 13, 60, 58),
+  sex = c(&quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;m&quot;, &quot;f&quot;, &quot;m&quot;)
+)
+
+
+intersect(subject,new_subjects)</code></pre>
+<pre><code>## # A tibble: 2 x 3
+##      id sex     age
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     4 f        40
+## 2     5 f        58</code></pre>
+</div>
+<div id="union" class="section level3">
+<h3><code>union()</code></h3>
+<p><code>union()</code> returns all the rows from both tables, removing any duplicate rows.</p>
+<div class="figure">
+<img src="union.gif" />
+
+</div>
+<pre class="r"><code>union(subject, new_subjects)</code></pre>
+<pre><code>## # A tibble: 9 x 3
+##      id sex     age
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1 m        11
+## 2     2 m        15
+## 3     3 f        16
+## 4     4 f        40
+## 5     5 f        58
+## 6     6 f        16
+## 7     7 m        13
+## 8     8 f        60
+## 9     9 m        58</code></pre>
+</div>
+<div id="setdiff" class="section level3">
+<h3><code>setdiff()</code></h3>
+<p><code>setdiff()</code> returns rows that are in the first table, but not in the second table.</p>
+<div class="figure">
+<img src="setdiff.gif" />
+
+</div>
+<pre class="r"><code>union(subject, new_subjects)</code></pre>
+<pre><code>## # A tibble: 9 x 3
+##      id sex     age
+##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+## 1     1 m        11
+## 2     2 m        15
+## 3     3 f        16
+## 4     4 f        40
+## 5     5 f        58
+## 6     6 f        16
+## 7     7 m        13
+## 8     8 f        60
+## 9     9 m        58</code></pre>
 </div>
 </div>
 
