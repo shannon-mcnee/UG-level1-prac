@@ -481,17 +481,43 @@ div.tocify {
 <pre class="r"><code>subject &lt;- tibble(id = seq(1,5),
                   sex = c(&quot;m&quot;,&quot;m&quot;,&quot;f&quot;,&quot;f&quot;,&quot;f&quot;), 
                   age = c(11,15,16,40,58)
-                  )
-
-subject</code></pre>
-<pre><code>## # A tibble: 5 x 3
-##      id sex     age
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
-## 1     1 m        11
-## 2     2 m        15
-## 3     3 f        16
-## 4     4 f        40
-## 5     5 f        58</code></pre>
+                  )</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">m</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+</tr>
+</tbody>
+</table>
 <p>There you go - we just simulated some data! Remember to read from the right hand side of the arrow to the left. What I’m doing here is I’m using the function <code>tibble()</code> to build a data frame with the columns <code>id</code>, <code>sex</code>, and <code>age</code>. I have made the <code>id</code> column by using <code>seq()</code> to generate a sequence of numbers from 1 to 5. In <code>sex</code> I’ve used <code>c()</code> to make a <strong>character vector</strong> which denotes whether the participant is male or female. In <code>age</code> I have again used <code>c()</code> to make a <strong>numeric vector</strong> of the participants ages.</p>
 <hr />
 <p>Remember - if you ever find yourself confused about what a function does, type <code>?function name</code> into your console to access built in help menus!</p>
@@ -501,21 +527,63 @@ subject</code></pre>
   id = c(2, 3, 4, 4, 5, 5, 6, 6, 7),
   social_score = c(10, 18, 21, 23, 9, 11, 11, 12, 3), 
   sleep_score = c(9, 5, 4, 15, 6, 10, 13, 20, 15)
-)
-
-exp</code></pre>
-<pre><code>## # A tibble: 9 x 3
-##      id social_score sleep_score
-##   &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-## 1     2           10           9
-## 2     3           18           5
-## 3     4           21           4
-## 4     4           23          15
-## 5     5            9           6
-## 6     5           11          10
-## 7     6           11          13
-## 8     6           12          20
-## 9     7            3          15</code></pre>
+)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="right">social_score</th>
+<th align="right">sleep_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">10</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">18</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">21</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">23</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">9</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">11</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">11</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">12</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="right">15</td>
+</tr>
+</tbody>
+</table>
 <p>I’ve used <code>tibble()</code> again here to make a data frame with three columns: <code>id</code>, <code>social_score</code> and <code>sleep_score</code>. In <code>id</code> I have used <code>c()</code> to make a <strong>numeric vector</strong> of participant’s id numbers and in <code>social_score</code> and <code>sleep_score</code> I have used <code>c()</code> to make <strong>numeric vectors</strong> of participant total scores on the night-time social media use and sleep health measures.</p>
 <p>You should now have two separate data frames in your <strong>Global Environment</strong>, <code>subject</code> (demographic information) and <code>exp</code> (questionnaire scores).</p>
 <p>Now it’s time to have a go at using some <strong>mutating joins</strong> on our data.</p>
@@ -531,17 +599,69 @@ exp</code></pre>
 
 </div>
 <p>How do we tell R to carry out this action?</p>
-<pre class="r"><code>left_join(subject, exp, by = &quot;id&quot;)</code></pre>
-<pre><code>## # A tibble: 7 x 5
-##      id sex     age social_score sleep_score
-##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-## 1     1 m        11           NA          NA
-## 2     2 m        15           10           9
-## 3     3 f        16           18           5
-## 4     4 f        40           21           4
-## 5     4 f        40           23          15
-## 6     5 f        58            9           6
-## 7     5 f        58           11          10</code></pre>
+<pre class="r"><code>left &lt;- left_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+<th align="right">social_score</th>
+<th align="right">sleep_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">m</td>
+<td align="right">11</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+<td align="right">18</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">21</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">23</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">9</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">11</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
 <p>Let’s break this down. We are telling R to make <code>subject</code> the <strong>left</strong> table and <code>exp</code> the <strong>right</strong> table, and to join them by <code>id</code>. Remember, this is all about <strong>relational data</strong>. We join by <code>id</code> because both <code>subject</code> and <code>exp</code> have <code>id</code> columns.</p>
 <hr />
 <p><strong>Pause here and interpret the above code and output</strong></p>
@@ -569,19 +689,83 @@ Solution
 <img src="right-join.gif" />
 
 </div>
-<pre class="r"><code>right_join(subject, exp, by = &quot;id&quot;)</code></pre>
-<pre><code>## # A tibble: 9 x 5
-##      id sex     age social_score sleep_score
-##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-## 1     2 m        15           10           9
-## 2     3 f        16           18           5
-## 3     4 f        40           21           4
-## 4     4 f        40           23          15
-## 5     5 f        58            9           6
-## 6     5 f        58           11          10
-## 7     6 &lt;NA&gt;     NA           11          13
-## 8     6 &lt;NA&gt;     NA           12          20
-## 9     7 &lt;NA&gt;     NA            3          15</code></pre>
+<pre class="r"><code>right &lt;- right_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+<th align="right">social_score</th>
+<th align="right">sleep_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+<td align="right">18</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">21</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">23</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">9</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">11</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">11</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">12</td>
+<td align="right">20</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">3</td>
+<td align="right">15</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><strong>Pause here to interpret the above code and output</strong></p>
 <ul>
@@ -605,16 +789,62 @@ Solution
 <img src="inner-join.gif" />
 
 </div>
-<pre class="r"><code>inner_join(subject, exp, by = &quot;id&quot;)</code></pre>
-<pre><code>## # A tibble: 6 x 5
-##      id sex     age social_score sleep_score
-##   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-## 1     2 m        15           10           9
-## 2     3 f        16           18           5
-## 3     4 f        40           21           4
-## 4     4 f        40           23          15
-## 5     5 f        58            9           6
-## 6     5 f        58           11          10</code></pre>
+<pre class="r"><code>inner &lt;- inner_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+<th align="right">social_score</th>
+<th align="right">sleep_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+<td align="right">18</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">21</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">23</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">9</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">11</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><strong>Pause here to interpret the above code and output</strong></p>
 <ul>
@@ -639,20 +869,90 @@ Solution
 <img src="full-join.gif" />
 
 </div>
-<pre class="r"><code>full_join(subject, exp, by = &quot;id&quot;)</code></pre>
-<pre><code>## # A tibble: 10 x 5
-##       id sex     age social_score sleep_score
-##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
-##  1     1 m        11           NA          NA
-##  2     2 m        15           10           9
-##  3     3 f        16           18           5
-##  4     4 f        40           21           4
-##  5     4 f        40           23          15
-##  6     5 f        58            9           6
-##  7     5 f        58           11          10
-##  8     6 &lt;NA&gt;     NA           11          13
-##  9     6 &lt;NA&gt;     NA           12          20
-## 10     7 &lt;NA&gt;     NA            3          15</code></pre>
+<pre class="r"><code>full &lt;- full_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+<th align="right">social_score</th>
+<th align="right">sleep_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">m</td>
+<td align="right">11</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="right">9</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+<td align="right">18</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">21</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="right">23</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">9</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="right">11</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">11</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">12</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">3</td>
+<td align="right">15</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p><strong>Pause here and interpret the above code and output</strong></p>
 <ul>
@@ -683,14 +983,38 @@ Solution
 <img src="semi-join.gif" />
 
 </div>
-<pre class="r"><code>semi_join(subject,exp, by = &quot;id&quot;)</code></pre>
-<pre><code>## # A tibble: 4 x 3
-##      id sex     age
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
-## 1     2 m        15
-## 2     3 f        16
-## 3     4 f        40
-## 4     5 f        58</code></pre>
+<pre class="r"><code>semi &lt;- semi_join(subject,exp, by = &quot;id&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Important:</strong> Order matters in a <code>semi_join()</code>! Change the order of <code>subject</code> and <code>exp</code> in the above code. What do you notice?</p>
 </div>
 </div>
@@ -701,11 +1025,23 @@ Solution
 <img src="anti-join.gif" />
 
 </div>
-<pre class="r"><code>anti_join(subject, exp, by = &quot;id&quot;)</code></pre>
-<pre><code>## # A tibble: 1 x 3
-##      id sex     age
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
-## 1     1 m        11</code></pre>
+<pre class="r"><code>anti &lt;- anti_join(subject, exp, by = &quot;id&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">m</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Important:</strong> Order also matters in an <code>anti_join()</code>. Have a go at changing the order of the tables in the code above. What do you notice?</p>
 </div>
 <div id="binding-joins" class="section level2">
@@ -721,19 +1057,63 @@ Solution
   age = c(12, 16, 42, 50)
 )
 
-bind_rows(subject, new_subjects)</code></pre>
-<pre><code>## # A tibble: 9 x 3
-##      id sex     age
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
-## 1     1 m        11
-## 2     2 m        15
-## 3     3 f        16
-## 4     4 f        40
-## 5     5 f        58
-## 6     6 m        12
-## 7     7 m        16
-## 8     8 f        42
-## 9     9 f        50</code></pre>
+bind_r &lt;- bind_rows(subject, new_subjects)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">m</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">m</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">m</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">f</td>
+<td align="right">42</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">f</td>
+<td align="right">50</td>
+</tr>
+</tbody>
+</table>
 <p>What we have done here is make a new data frame which has sex and age data for four additional participants. We have then combined our new data frame, <code>new_subjects</code>, with our existing data frame <code>subject</code> to give us demographic information for nine participants in total.</p>
 <p>The columns just have to have the same names, they don’t have to be in the same order. Any columns that differ between the two tables will just have NA values for entries from the other table. If a row is duplicated between the two tables, the row will also be duplicated in the resulting table.</p>
 </div>
@@ -746,15 +1126,49 @@ bind_rows(subject, new_subjects)</code></pre>
   nationality = c(&quot;Scottish&quot;, &quot;Scottish&quot;, &quot;Irish&quot;, &quot;English&quot;, &quot;Welsh&quot;)
 )
 
-bind_cols(subject, new_info)</code></pre>
-<pre><code>## # A tibble: 5 x 4
-##      id sex     age nationality
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;      
-## 1     1 m        11 Scottish   
-## 2     2 m        15 Scottish   
-## 3     3 f        16 Irish      
-## 4     4 f        40 English    
-## 5     5 f        58 Welsh</code></pre>
+bind_c &lt;- bind_cols(subject, new_info)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+<th align="left">nationality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">m</td>
+<td align="right">11</td>
+<td align="left">Scottish</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+<td align="left">Scottish</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+<td align="left">Irish</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+<td align="left">English</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+<td align="left">Welsh</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>We have now covered a range of <strong>join verbs</strong> from three different families: mutating, filtering, and binding. Next, we’ll move onto <strong>set operations</strong></p>
 <hr />
@@ -782,12 +1196,28 @@ bind_cols(subject, new_info)</code></pre>
 )
 
 
-intersect(subject,new_subjects)</code></pre>
-<pre><code>## # A tibble: 2 x 3
-##      id sex     age
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
-## 1     4 f        40
-## 2     5 f        58</code></pre>
+inter &lt;- intersect(subject,new_subjects)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="union" class="section level3">
 <h3><code>union()</code></h3>
@@ -796,19 +1226,63 @@ intersect(subject,new_subjects)</code></pre>
 <img src="union.gif" />
 
 </div>
-<pre class="r"><code>union(subject, new_subjects)</code></pre>
-<pre><code>## # A tibble: 9 x 3
-##      id sex     age
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
-## 1     1 m        11
-## 2     2 m        15
-## 3     3 f        16
-## 4     4 f        40
-## 5     5 f        58
-## 6     6 f        16
-## 7     7 m        13
-## 8     8 f        60
-## 9     9 m        58</code></pre>
+<pre class="r"><code>uni &lt;- union(subject, new_subjects)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="left">sex</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">m</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">m</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">f</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">f</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">f</td>
+<td align="right">58</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">f</td>
+<td align="right">16</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">m</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left">f</td>
+<td align="right">60</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">m</td>
+<td align="right">58</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="setdiff" class="section level3">
 <h3><code>setdiff()</code></h3>
@@ -817,19 +1291,36 @@ intersect(subject,new_subjects)</code></pre>
 <img src="setdiff.gif" />
 
 </div>
-<pre class="r"><code>union(subject, new_subjects)</code></pre>
-<pre><code>## # A tibble: 9 x 3
-##      id sex     age
-##   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
-## 1     1 m        11
-## 2     2 m        15
-## 3     3 f        16
-## 4     4 f        40
-## 5     5 f        58
-## 6     6 f        16
-## 7     7 m        13
-## 8     8 f        60
-## 9     9 m        58</code></pre>
+<pre class="r"><code>sd &lt;- setdiff(subject, new_subjects)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="right">age</th>
+<th align="left">sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">11</td>
+<td align="left">m</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">15</td>
+<td align="left">m</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">16</td>
+<td align="left">f</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Well done! You now have an understanding of <strong>data relations</strong> and the various ways R can help you to combine data from various different sources to help keep your analysis path clean and tidy.</p>
+<hr />
 </div>
 </div>
 

@@ -112,8 +112,11 @@ subject <- tibble(id = seq(1,5),
                   age = c(11,15,16,40,58)
                   )
 
-subject
+```
 
+```{r, echo = FALSE} 
+
+knitr::kable(subject)
 
 ```
 
@@ -135,7 +138,11 @@ exp <- tibble(
   sleep_score = c(9, 5, 4, 15, 6, 10, 13, 20, 15)
 )
 
-exp
+```
+
+```{r, echo = FALSE}
+
+knitr::kable(exp) 
 
 ```
 
@@ -160,7 +167,13 @@ How do we tell R to carry out this action?
 
 ```{r} 
 
-left_join(subject, exp, by = "id")
+left <- left_join(subject, exp, by = "id")
+
+```
+
+```{r, echo = FALSE} 
+
+knitr::kable(left)
 
 ```
 
@@ -196,9 +209,16 @@ Technically, there's nothing actually stopping us from carrying out a `right_joi
 
 ```{r} 
 
-right_join(subject, exp, by = "id")
+right <- right_join(subject, exp, by = "id")
 
 ```
+
+```{r, echo = FALSE} 
+
+knitr::kable(right)
+
+```
+
 
 ******
 
@@ -224,8 +244,14 @@ An `inner_join()` returns all the rows that have a match in the other table. The
 
 ```{r} 
 
-inner_join(subject, exp, by = "id")
+inner <- inner_join(subject, exp, by = "id")
 
+
+```
+
+```{r, echo = FALSE}
+
+knitr::kable(inner)
 
 ```
 
@@ -256,7 +282,13 @@ A `full_join()` keeps absolutely everything from **both** tables. If a row doesn
 
 ```{r}
 
-full_join(subject, exp, by = "id")
+full <- full_join(subject, exp, by = "id")
+
+```
+
+```{r, echo = FALSE}
+
+knitr::kable(full)
 
 ```
 
@@ -294,7 +326,13 @@ A `semi_join()` returns all rows from the left table where there are matching va
 
 ```{r}
 
-semi_join(subject,exp, by = "id")
+semi <- semi_join(subject,exp, by = "id")
+
+```
+
+```{r, echo = FALSE}
+
+knitr::kable(semi)
 
 ```
 
@@ -308,7 +346,14 @@ An `anti_join()` returns all rows from the left table where there are **not** ma
 
 ```{r} 
 
-anti_join(subject, exp, by = "id")
+anti <- anti_join(subject, exp, by = "id")
+
+```
+
+
+```{r, echo = FALSE}
+
+knitr::kable(anti)
 
 ```
 
@@ -332,7 +377,13 @@ new_subjects <- tibble(
   age = c(12, 16, 42, 50)
 )
 
-bind_rows(subject, new_subjects)
+bind_r <- bind_rows(subject, new_subjects)
+
+```
+
+```{r, echo = FALSE} 
+
+knitr::kable(bind_r)
 
 ```
 
@@ -354,7 +405,13 @@ new_info <- tibble(
   nationality = c("Scottish", "Scottish", "Irish", "English", "Welsh")
 )
 
-bind_cols(subject, new_info)
+bind_c <- bind_cols(subject, new_info)
+
+```
+
+```{r, echo = FALSE}
+
+knitr::kable(bind_c)
 
 ```
 
@@ -387,7 +444,13 @@ new_subjects <- tibble(
 )
 
 
-intersect(subject,new_subjects)
+inter <- intersect(subject,new_subjects)
+```
+
+```{r, echo = FALSE}
+
+knitr::kable(inter)
+
 ```
 
 ### `union()`
@@ -398,7 +461,14 @@ intersect(subject,new_subjects)
 
 ```{r} 
 
-union(subject, new_subjects)
+uni <- union(subject, new_subjects)
+
+
+```
+
+``` {r, echo = FALSE}
+
+knitr::kable(uni)
 
 ```
 
@@ -410,8 +480,19 @@ union(subject, new_subjects)
 
 ```{r} 
 
-union(subject, new_subjects)
+sd <- setdiff(subject, new_subjects)
+
 
 ```
 
+```{r, echo = FALSE}
 
+knitr::kable(sd)
+
+```
+
+******
+
+Well done! You now have an understanding of **data relations** and the various ways R can help you to combine data from various different sources to help keep your analysis path clean and tidy. 
+
+******
