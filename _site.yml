@@ -1,16 +1,15 @@
 name: "Level One Psychology Practical Support"
 output_dir: "docs"
+output:  
+  html_document:  
+    self_contained: no
 navbar:
   title: "Level One Psychology Practical Support"
   left:
-    - text: "Home"
-      href: index.html
     - text: "Setting Up"
-      href: Setting_up.html
-    - text: "Introduction to Tidyverse and Data Visualisation"
-      href: Intro_Tidyverse.html
-output:
-  webex::webex_default:
-    theme: cosmo
-    toc: true
-    toc_float: true
+      href: test.html
+
+
+
+
+      

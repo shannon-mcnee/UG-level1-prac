@@ -1,15 +1,11 @@
 ---
 title: "Welcome to Level One Psychology Practical Support!"
-output: webex::webex_default
+output: html_document
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-if (!requireNamespace("webex")) {
-  stop("You must have the 'webex' package installed to knit HTML from this template.\n   devtools::install_github(\"psyteachr/webex\")")
-} else {
-  library("webex")
-}
+
 ```
 
 <br>

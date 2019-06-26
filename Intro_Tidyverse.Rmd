@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Tidyverse and Data Visualisation"
-output: webex::webex_default
+output: html_document
 ---
 
 ```{r setup, include = FALSE}
@@ -80,7 +80,7 @@ eye_data <- read_csv("eye_descriptions.csv")
 
 ```
 
-We can read this line of code from the right hand side of the arrow, to the left hand side. Here, you are telling R: load in the .csv file "eye_descriptions.csv" and store this file in a variable called `eye_data`. Now, run this line of code by **Run**. 
+We can read this line of code from the right hand side of the arrow, to the left hand side. Here, you are telling R: load in the .csv file "eye_descriptions.csv" and store this file in a variable called `eye_data`. Now, run this line of code by hitting **Run**. 
 
 You should now have a variable called `eye_data` in your **Global Environment** at the top right hand side of your screen. 
 
@@ -129,7 +129,7 @@ Have a look at the data by using `View(separated_eyes)` in your console. Do you 
 But it's fine, because we can just use `gather()` again!
 
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 
 gathered_separated_eyes <- gather(separated_eyes,"desc_n", "description", d1:d3)
 
@@ -176,19 +176,19 @@ Pause here and test your knowledge of the verbs you have learned so far!
 
 * What does `gather()` do? 
 
-`r mcq(c("splits a column into multiple columns", "removes information that we're not interested in and keeps information that we are interested in", answer = "takes multiple columns and collapses them so that each unique variable has it's own column"))`
+`r mcq(c("splits a column into multiple columns", "removes information that we're not interested in", "transforms existing columns", answer = "takes multiple columns and collapses them together"))`
 
 * What does `separate()` do? 
 
-`r mcq(c(answer = "splits a column into multiple columns", "removes information that we're not interested in and keeps information that we are interested in", "transforms existing columns", "takes multiple columns and collapses them so that each unique variable has it's own column"))`
+`r mcq(c(answer = "splits a column into multiple columns", "removes information that we're not interested in", "transforms existing columns", "takes multiple columns and collapses them together"))`
 
 * What does `filter()` do? 
 
-`r mcq(c("splits a column into multiple columns", answer = "removes information that we're not interested in and keeps information that we are interested in", "transforms existing columns", "takes multiple columns and collapses them so that each unique variable has it's own column"))`
+`r mcq(c("splits a column into multiple columns", "transforms existing columns", "takes multiple columns and collapses them together", answer = "removes information that we are not interested in"))`
 
 * What does `mutate()` do? 
 
-`r mcq(c("splits a column into multiple columns","removes information that we're not interested in and keeps information that we are interested in", answer = "transforms existing columns", "takes multiple columns and collapses them so that each unique variable has it's own column"))`
+`r mcq(c("splits a column into multiple columns","removes information that we're not interested in", answer = "transforms existing columns", "takes multiple columns and collapses them together"))`
 
 ******
 

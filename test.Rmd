@@ -1,14 +1,16 @@
 ---
-title: "Setting Up"
-output: html_document
+title: "Untitled"
+output:
+  html_document:
+  css: webex.css
+  includes:
+   after_body: webex.js
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(eval = FALSE)
-
+library(tidyverse)
 library(webex)
-
 ```
 
 <br>
@@ -261,10 +263,7 @@ However, error messages can be frustrating. So, it's important to develop skills
 
 Let's have some practice at interpreting and resolving common errors you are likely to experience during the set up of your R environment. 
 
-<br>
-
 ### "Object `package name` not found"
-<br>
 
 I tried to run this line of code...
 
@@ -275,13 +274,10 @@ install.packages(tidyverse)
 ```
 
 and got this error...
-<br>
 
 ![](installerror.png)
 
-<br>
 How can I debug this code? 
-<br>
 
 `r hide("Hint")`
 
@@ -289,18 +285,14 @@ Have a look at the section on installing packages. Can you spot anything differe
 
 `r unhide()`
 
-`r hide("Solution")`
-<br>
 ```{r, eval = FALSE, webex.hide = TRUE}
 
 install.packages("tidyverse")
 
 ```
-`r unhide()`
-<br>
 
 ### "There is no package called `package name`"
-<br>
+
 Can you spot why this code...
 
 ```{r}
@@ -311,23 +303,19 @@ library(tidyvere)
 
 ...gives me this error? 
 
-<br>
 ![](tidyerror.png)
-<br>
+
 `r hide("Hint")`
 
 R is very particular about spelling. R can't guess what you mean!
 
 `r unhide()`
 
-`r hide("Solution")`
-```{r, eval = FALSE}
+```{r, eval = FALSE, webex.hide = TRUE}
 
 library(tidyverse) 
 
 ```
-`r unhide()`
-<br>
 
 ### "Unexpected symbol"
 
@@ -341,21 +329,19 @@ library(tidyverse
 ```
 
 ...so that I don't get this error? 
-<br>
 
 ![](liberror.png)
-<br>
+
 `r hide("Hint")`
 <img src = "Bob.jpg">
 `r unhide()`
 
-`r hide("Solution")`
-```{r, eval = FALSE}
+```{r, eval = FALSE, webex.hide = TRUE}
 
 library(tidyverse)
 
 ```
-`r unhide()`
+
 <br>
 
 ## How to ask R for more help 
@@ -368,6 +354,6 @@ You can directly call the help menu by typing `?name of function/package` into y
 
 **Great! You now know how the R environment is structured, you are aware of the difference between .R and .Rmd files, and you know how to use functions to load in packages. You have also had a go at resolving some common set up errors.**
 
-**We are now ready to begin using `tidyverse`!**
+**We are now ready to begin using tidyverse!**
 
 ******
