@@ -114,7 +114,7 @@ But we’re not done yet! Some participants didn’t just provide one descriptio
 
 ## `separate()`
 
-Separate allows us to split apart a given column into multiple columns. Say we’re interested in breaking apart the descriptions that people have given into three different columns, one per description.
+`separate()` allows us to split apart a given column into multiple columns. Say we’re interested in breaking apart the descriptions that people have given into three different columns, one per description.
 
 ```{r}
 
@@ -139,7 +139,7 @@ However, not all participants provided three descriptions for each eye region. M
 
 ## `filter()`
 
-Filter finds rows/cases where conditions are true. Here, let’s use filter to get rid of NAs and any nonsense descriptions.
+`filter()` finds rows/cases where conditions are true. Here, let’s use filter to get rid of NAs and any nonsense descriptions.
 
 The ! inverts a statement, so in the case of !is.na() we are telling R to keep an item as long as it “is not NA”.
 
@@ -407,6 +407,30 @@ eyes %>%
 ```
 
 Notice that `eyes` isn't the first input argument into `mutate` or `ggplot`  because we have piped this dataset into the chain of functions at the start. R knows what data we are using so we don't need to specify it whenever we use a function. 
+
+
+## Additional verbs
+
+### `select()` 
+
+We didn't have to use `select()` in the above example but it is a very common (and useful!) `tidyverse` verb. `select()` allows you to keep specific columns, and remove others. Say for example, we only cared about user_id and faces t1 to t10. We could do the following: 
+
+```{r} 
+
+selected_eyes <- select(eye_data, user_id, t1:t10)
+```
+
+### `spread()`
+
+We also didn't get a chance to use `spread()`. `spread()` is a bit less commonly used than the other `tidyverse` verb functions because it involves putting data back into **WIDE** format from **LONG** format. So, it's essentially the opposite of `gather()`. 
+
+```{r}
+
+spread_eyes <- spread(top_10_eyes,description,n)
+
+```
+
+Now, instead of `top_10_eyes` having columns called `description` and `n`, the descriptors are column names and `n` is a value in a cell. 
 
 ******
 

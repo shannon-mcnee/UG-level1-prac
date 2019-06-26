@@ -483,7 +483,7 @@ div.tocify {
 </div>
 <div id="separate" class="section level2">
 <h2><code>separate()</code></h2>
-<p>Separate allows us to split apart a given column into multiple columns. Say we’re interested in breaking apart the descriptions that people have given into three different columns, one per description.</p>
+<p><code>separate()</code> allows us to split apart a given column into multiple columns. Say we’re interested in breaking apart the descriptions that people have given into three different columns, one per description.</p>
 <pre class="r"><code>separated_eyes &lt;- separate(gathered_eyes, description, c(&quot;d1&quot;,&quot;d2&quot;,&quot;d3&quot;), sep = &quot;(,|;|\\/)+&quot;, extra = &quot;merge&quot;)</code></pre>
 <pre><code>## Warning: Expected 3 pieces. Missing pieces filled with `NA` in 10645
 ## rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
@@ -496,7 +496,7 @@ div.tocify {
 </div>
 <div id="filter" class="section level2">
 <h2><code>filter()</code></h2>
-<p>Filter finds rows/cases where conditions are true. Here, let’s use filter to get rid of NAs and any nonsense descriptions.</p>
+<p><code>filter()</code> finds rows/cases where conditions are true. Here, let’s use filter to get rid of NAs and any nonsense descriptions.</p>
 <p>The ! inverts a statement, so in the case of !is.na() we are telling R to keep an item as long as it “is not NA”.</p>
 <pre class="r"><code>filtered_eyes &lt;- filter(gathered_separated_eyes,
                         !is.na(description),
@@ -760,9 +760,23 @@ knitr::kable(eyes)</code></pre>
   ggtitle(&quot;Top 10 descriptors for eye region expressions&quot;)</code></pre>
 <p><img src="Intro_Tidyverse_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Notice that <code>eyes</code> isn’t the first input argument into <code>mutate</code> or <code>ggplot</code> because we have piped this dataset into the chain of functions at the start. R knows what data we are using so we don’t need to specify it whenever we use a function.</p>
+</div>
+<div id="additional-verbs" class="section level2">
+<h2>Additional verbs</h2>
+<div id="select" class="section level3">
+<h3><code>select()</code></h3>
+<p>We didn’t have to use <code>select()</code> in the above example but it is a very common (and useful!) <code>tidyverse</code> verb. <code>select()</code> allows you to keep specific columns, and remove others. Say for example, we only cared about user_id and faces t1 to t10. We could do the following:</p>
+<pre class="r"><code>selected_eyes &lt;- select(eye_data, user_id, t1:t10)</code></pre>
+</div>
+<div id="spread" class="section level3">
+<h3><code>spread()</code></h3>
+<p>We also didn’t get a chance to use <code>spread()</code>. <code>spread()</code> is a bit less commonly used than the other <code>tidyverse</code> verb functions because it involves putting data back into <strong>WIDE</strong> format from <strong>LONG</strong> format. So, it’s essentially the opposite of <code>gather()</code>.</p>
+<pre class="r"><code>spread_eyes &lt;- spread(top_10_eyes,description,n)</code></pre>
+<p>Now, instead of <code>top_10_eyes</code> having columns called <code>description</code> and <code>n</code>, the descriptors are column names and <code>n</code> is a value in a cell.</p>
 <hr />
 <p>In this tutorial, you have been introducted to the meta-package <code>tidyverse</code> and one of the packages within it, <code>ggplot2</code>. You have been introduced to nine powerful verb functions (though there are many more!) that can help us to clean and analyse our data in a way that is quick, effective, and fun. You have also had a go at producing beautiful and engaging data visualisations.</p>
 <hr />
+</div>
 </div>
 <div id="additional-resources" class="section level2">
 <h2>Additional Resources</h2>
