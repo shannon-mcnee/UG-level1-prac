@@ -44,7 +44,7 @@ You are conducting a study to investigate whether adolescents (aged 11-18 years)
 
 Being able to wrangle your data, manipulate it into different layouts, extract the parts you need, and summarise it, is one of the most important skills we will help you learn in the coming weeks.
 
-Luckily, R can make this task a lot less painful through the use of **join verbs** and **set operations**. 
+Luckily, R can make this task really straightforward through the use of **join verbs** and **set operations**. 
 
 ## Join Verbs 
 
@@ -493,6 +493,6 @@ knitr::kable(sd)
 
 ******
 
-Well done! You now have an understanding of **data relations** and the various ways R can help you to combine data from various different sources to help keep your analysis path clean and tidy. 
+Well done! You now have an understanding of **data relations** and the various ways R can help you to combine data from multiple sources to help keep your analysis path clean and tidy. 
 
 ******
