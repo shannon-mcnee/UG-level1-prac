@@ -71,7 +71,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="/Library/Frameworks/R.framework/Versions/3.5/Resources/library/webex/reports/default/webex.css" type="text/css" />
+<link rel="stylesheet" href="webex.css" type="text/css" />
 
 
 
@@ -420,10 +420,10 @@ div.tocify {
 <h2>File Types</h2>
 <div id="what-is-a-.r-file" class="section level3">
 <h3>What is a .R file?</h3>
-<p>A .R file is a 'script'. You can pull up a new script by hitting:</p>
+<p>A .R file is a ‘script’. You can pull up a new script by hitting:</p>
 <p><strong>File &gt; New File &gt; R Script</strong></p>
 <p>When you do this, a blank page should pop up in your R Studio window with your cursor blinking away, waiting for instruction.</p>
-<p>So what's the point of this? Imagine you're sitting down to write an essay. It's highly unlikely that you will produce an essay that you are totally happy with on the first try, so you scribble down your ideas on a piece of paper. Think of an R Script like that piece of paper - it lets you write down your ideas and lets you play around with them!</p>
+<p>So what’s the point of this? Imagine you’re sitting down to write an essay. It’s highly unlikely that you will produce an essay that you are totally happy with on the first try, so you scribble down your ideas on a piece of paper. Think of an R Script like that piece of paper - it lets you write down your ideas and lets you play around with them!</p>
 <p>All of the text in a R Script will default to being read as text directed to your computer. So, R Scripts contain messages directed towards your <strong>computer</strong> and not necessairly towards us as humans. But, we can tell R <strong>not</strong> to read something by including the text as a <strong>comment</strong>.</p>
 <pre class="r"><code># This is what a comment looks like. Anything AFTER a hashtag.
 
@@ -441,25 +441,25 @@ div.tocify {
 <h3>What is a .Rmd file?</h3>
 <p>Whilst .R files contain text generally aimed at your computer, with the important exception of comments, .Rmd files (or R Markdown files as they are also called) are aimed at <strong>humans</strong>. To open up a new R Markdown file, hit:</p>
 <p><strong>File &gt; New File &gt; R Markdown</strong></p>
-<p>When your R Markdown file opens, you will notice that there's already some stuff in there. This is a helpful template that the creators of R Markdown have provided which gives us some information about the basic structure of R Markdown files.</p>
-<p>The main thing for you to grasp at this stage is the importance of <strong>code chunks</strong>. R Markdown files default to providing text for <strong>humans</strong>. Have a look at the screenshot below, see the mixture of text and shaded boxes? Those shaded boxes are <strong>code chunks</strong>. R cannot read any text outside a code chunk as executable code. Instead, that text is intended for us as humans. For example, you could provide details of what each code chunk does so that you can send your analysis to a colleague. If we want text to be recognised as <strong>executable code</strong> it must be put <strong>inside</strong> a code chunk (i.e. the shaded boxes in the screenshot).</p>
+<p>When your R Markdown file opens, you will notice that there’s already some stuff in there. This is a helpful template that the creators of R Markdown have provided which gives us some information about the basic structure of R Markdown files.</p>
+<p>The main thing for you to grasp at this stage is the importance of <strong>code chunks</strong>. R Markdown files default to providing text for <strong>humans</strong>. Have a look at the screenshot below, see the mixture of text and shaded boxes? Those shaded boxes are <strong>code chunks</strong>. R cannot read any text outside a code chunk as executable code. Instead, that text is intended for us as humans. For example, you could provide details of what each code chunk does so that you can send your analysis to a colleague. If we want text to be recognised as <strong>executable code</strong> it must be put <strong>inside</strong> a code chunk (i.e. the shaded boxes in the screenshot).</p>
 <div class="figure">
 <img src="RMark.png" />
 
 </div>
-<p>Code chunks are bordered by &quot;backticks&quot;, which look a lot like apostrophes but they are different! These are important as they tell R where it needs to start and stop reading text as executable code. If, like me, you had never used a backtick before learning R - you can find it above the tab key on most Windows devices and beside shift and Z on most Macs.</p>
-<p>Code chunks also contain &quot;curly brackets&quot; at the start which contains various bits of information neccessary to how the computer reads it. This includes what programming language you are writing in (yes! R Markdown documents can accept other programming languages), name of the chunk (used for a variety of reasons, such as our marking software and document indexing) and other attributes which you will learn about in years to come.</p>
+<p>Code chunks are bordered by “backticks”, which look a lot like apostrophes but they are different! These are important as they tell R where it needs to start and stop reading text as executable code. If, like me, you had never used a backtick before learning R - you can find it above the tab key on most Windows devices and beside shift and Z on most Macs.</p>
+<p>Code chunks also contain “curly brackets” at the start which contains various bits of information neccessary to how the computer reads it. This includes what programming language you are writing in (yes! R Markdown documents can accept other programming languages), name of the chunk (used for a variety of reasons, such as our marking software and document indexing) and other attributes which you will learn about in years to come.</p>
 <p><br></p>
 <div class="figure">
 <img src="chunk.png" />
 
 </div>
 <p><br></p>
-<p>In the lab, you will be using .R files (to follow along with live coding) and .Rmd files (for your assignments) so it's very important that you understand the functionality of these file types and the differences between them. Just keep in mind: .R files contain text for <strong>computers</strong> (with the important exception of comments), .Rmd files contain text for <strong>humans</strong> and <strong>computers</strong>.</p>
+<p>In the lab, you will be using .R files (to follow along with live coding) and .Rmd files (for your assignments) so it’s very important that you understand the functionality of these file types and the differences between them. Just keep in mind: .R files contain text for <strong>computers</strong> (with the important exception of comments), .Rmd files contain text for <strong>humans</strong> and <strong>computers</strong>.</p>
 </div>
 <div id="saving-.r-and-.rmd-files" class="section level3">
 <h3>Saving .R and .Rmd files</h3>
-<p>As mentioned previously, <strong>anything in the console vanishes when we close R</strong>. So, it's <strong>really important</strong> that you save your work in either a .R or .Rmd file. When we save a .R or .Rmd file, we are able to open it up again at a later date, hit run, and get back to where we left off!</p>
+<p>As mentioned previously, <strong>anything in the console vanishes when we close R</strong>. So, it’s <strong>really important</strong> that you save your work in either a .R or .Rmd file. When we save a .R or .Rmd file, we are able to open it up again at a later date, hit run, and get back to where we left off!</p>
 <p>When saving a .R or .Rmd file for the first time, go to:</p>
 <p><strong>File &gt; Save As</strong></p>
 <p>When saving a .R or .Rmd file after making changes, go to:</p>
@@ -471,14 +471,14 @@ div.tocify {
 <h2>Sessions and Working Directory</h2>
 <div id="what-is-a-session" class="section level3">
 <h3>What is a session?</h3>
-<p>Whenever you click on the Rstudio icon and you see a window like this pop up...</p>
+<p>Whenever you click on the Rstudio icon and you see a window like this pop up…</p>
 <div class="figure">
 <img src="RSesh.png" />
 
 </div>
 <p>you have started a new <strong>R session</strong>. A session in R is a segment of workspace time that is dedicated to performing a specific processing or analysis task. It can be difficult to wrap your head around at first, but it helps to draw comparisons with software that we are already familiar with.</p>
-<p>Let's use Microsoft Word as an example, we can have an essay open in one window and class notes opened up in another window. Both are instances of Word, but they are dedicated to two different tasks (essay as one and class notes as the other) which just so happen to be running concurrently.</p>
-<p>You can have multiple sessions open in R, but I wouldn't recommend it because it can become confusing. We can start a new session by going to:</p>
+<p>Let’s use Microsoft Word as an example, we can have an essay open in one window and class notes opened up in another window. Both are instances of Word, but they are dedicated to two different tasks (essay as one and class notes as the other) which just so happen to be running concurrently.</p>
+<p>You can have multiple sessions open in R, but I wouldn’t recommend it because it can become confusing. We can start a new session by going to:</p>
 <p><strong>Session &gt; New Session</strong>.</p>
 </div>
 <div id="can-i-restart-my-session" class="section level3">
@@ -488,9 +488,9 @@ div.tocify {
 <p>Restarting your R session does some important things:</p>
 <ul>
 <li><p>It clears the environment of objects if R is set up in a maximally reproducible way- so make sure your script is saved so that you keep the instructions for making them again. If all goes well you can recreate all of the objects by running the code again.</p></li>
-<li><p>It &quot;unloads&quot; packages that you have called from the library using the library() function.</p></li>
+<li><p>It “unloads” packages that you have called from the library using the library() function.</p></li>
 <li><p>If you encounter an error with an unknown source sometimes restarting the session can clear the problem- sometimes there can be objects in the environment which are hidden and can cause problems.</p></li>
-<li><p>It allows you to test the reproducibility of the script that you are writing by clearing the environment and starting over with only the instructions you have provided, without the possibility of &quot;contamination&quot; of objects inadvertently created in other ways, such as playing in the console.</p></li>
+<li><p>It allows you to test the reproducibility of the script that you are writing by clearing the environment and starting over with only the instructions you have provided, without the possibility of “contamination” of objects inadvertently created in other ways, such as playing in the console.</p></li>
 </ul>
 </div>
 <div id="what-is-a-working-directory" class="section level3">
@@ -498,7 +498,7 @@ div.tocify {
 <p>At the start of every new session in R, it is important to set your <strong>working directory</strong>. Put simply, your working directory is the place our file lives. If we have a dataset we would like to work with, it is important that we set our working directory to the folder that we have this data stored in so that we can use it.</p>
 <p>We can manually set our directory by using the following:</p>
 <p><strong>Session &gt; Set Working Directory &gt; Choose Directory</strong></p>
-<p>As I mentioned above, it's important that you keep your .R or .Rmd files in the <strong>same place</strong> as your data. If you have done this, you can set your working directory by using the following:</p>
+<p>As I mentioned above, it’s important that you keep your .R or .Rmd files in the <strong>same place</strong> as your data. If you have done this, you can set your working directory by using the following:</p>
 <p><strong>Session &gt; Set Working Directory &gt; To Source File Location</strong></p>
 <hr />
 <p><strong>Pause and test your knowledge</strong></p>
@@ -529,7 +529,7 @@ Solution
 <button>
 Solution
 </button>
-<p>The working directory is where our files &quot;live&quot;. The working directory must be set at the start of every new R session so that R can access the files we need. You can set your working directory in two ways:</p>
+<p>The working directory is where our files “live”. The working directory must be set at the start of every new R session so that R can access the files we need. You can set your working directory in two ways:</p>
 <ul>
 <li>Session &gt; Set Working Directory &gt; Choose Directory</li>
 <li>Session &gt; Set Working Directory &gt; To Source File Location</li>
@@ -553,32 +553,32 @@ Solution
 <h3>What is a function?</h3>
 <p>Imagine you want to bake some chocolate brownies. You read the recipe and it tells you to pour, mix, and chop ingredients. What do pouring, mixing, and chopping have in common? They are <strong>actions</strong>. A function can be seen as a <strong>command</strong> which tells R to carry out a specific <strong>action</strong>.</p>
 <p>Functions are structured in the following way:</p>
-<pre class="r"><code>function_name(argument_1,argument_2,argument_3,...)</code></pre>
-<p>The command (or action) is the thing outside the brackets, and the things that are inside the brackets are <strong>input arguments</strong> (e.g. the things that the action should be executed on). How would this look in our baking analogy?</p>
-<pre class="r"><code>mix(eggs,flour,sugar)</code></pre>
+<p><code>function_name(argument_1,argument_2,argument_3,...)</code></p>
+<p>The command (or action) is the thing outside the brackets, and the things that are inside the brackets are <strong>input arguments</strong> (e.g. the things that the action should be executed on). How would this look in our baking analogy?</p>
+<p><code>mix(eggs,flour,sugar)</code></p>
 <p>Here, we are mixing (command/action) eggs, flour, and sugar (input arguments) together. Whilst functions <strong>take</strong> input arguments, they <strong>give</strong> outputs. So, in the above baking example, our output would be a batter that we can now put in a cake tin.</p>
 </div>
 <div id="what-are-packages" class="section level3">
 <h3>What are packages?</h3>
-<p>Think of R like a smartphone. Smartphones run an operating system (e.g. Android or Apple) and they can achieve a lot of things with this base operating system alone. But, this base operating system doesn't suit everyone's needs - so you can download and install apps to personalise your user experience. R works in the exact same way. It has a base operating system that can do a lot, but it doesn't meet all users needs. So, users of R design packages to fill gaps in the functionality of R which you can download and install.</p>
-<p>One of the main packages you will be using this year is something called <strong>tidyverse</strong>. Tidyverse is a &quot;meta-package&quot; which is a fancy way of saying it's a package with lots of other packages inside it. This collection of packages share a common design philosophy and grammar and because of that they make data analysis a lot easier and (if you can believe it) actually fun!</p>
+<p>Think of R like a smartphone. Smartphones run an operating system (e.g. Android or Apple) and they can achieve a lot of things with this base operating system alone. But, this base operating system doesn’t suit everyone’s needs - so you can download and install apps to personalise your user experience. R works in the exact same way. It has a base operating system that can do a lot, but it doesn’t meet all users needs. So, users of R design packages to fill gaps in the functionality of R which you can download and install.</p>
+<p>One of the main packages you will be using this year is something called <strong>tidyverse</strong>. Tidyverse is a “meta-package” which is a fancy way of saying it’s a package with lots of other packages inside it. This collection of packages share a common design philosophy and grammar and because of that they make data analysis a lot easier and (if you can believe it) actually fun!</p>
 </div>
 <div id="how-can-i-install-a-package" class="section level3">
 <h3>How can I install a package?</h3>
 <p>Tidyverse does not come with R as standard. This means <strong>if you are using your own device</strong> you will have to install it.</p>
 <p><strong>Never install a package on a university machine. All packages required for your coursework are already installed on our machines</strong></p>
 <p><strong>If you are using a computer in the library and something you need is missing, please speak to IT services in the Level 4 annex</strong></p>
-<p>So, if you are looking to install tidyverse on <strong>your own device</strong> this is how it's done. It should only ever need to be done once, unless you ever uninstall the package.</p>
+<p>So, if you are looking to install tidyverse on <strong>your own device</strong> this is how it’s done. It should only ever need to be done once, unless you ever uninstall the package.</p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
-<p>What do you notice about this line of code? We have used a <strong>function</strong> to install tidyverse. <code>install.packages</code> is the function name, the command/action to be executed. Inside the brackets, &quot;tidyverse&quot; is the input argument - the name of the package you would like to install. The <strong>output</strong> of this function is that you have now installed the package.</p>
+<p>What do you notice about this line of code? We have used a <strong>function</strong> to install tidyverse. <code>install.packages</code> is the function name, the command/action to be executed. Inside the brackets, “tidyverse” is the input argument - the name of the package you would like to install. The <strong>output</strong> of this function is that you have now installed the package.</p>
 <hr />
-<p><strong>Never put this code in a script. If you re-run the script, it will re-run the <code>install.packages(&quot;tidyverse&quot;)</code> code which can cause problems - especially if this is done on a university machine. In addition, if you share your code with a colleague, R will attempt to install the package on their machine. This is not good researcher practice as it is rude and can potentially break other programmes on the user's machine</strong></p>
+<p><strong>Never put this code in a script. If you re-run the script, it will re-run the <code>install.packages(&quot;tidyverse&quot;)</code> code which can cause problems - especially if this is done on a university machine. In addition, if you share your code with a colleague, R will attempt to install the package on their machine. This is not good researcher practice as it is rude and can potentially break other programmes on the user’s machine</strong></p>
 <p><strong>Always run <code>install.packages()</code> in your console</strong></p>
 <hr />
 </div>
 <div id="how-can-i-load-a-package" class="section level3">
 <h3>How can I load a package?</h3>
-<p>Imagine you've downloaded Instagram from your smartphone's app store. It downloaded fine, and now you want to use it. How do you open it? You click on it. In just the same way, once we've installed a package in R, we need to tell it to open up the package so we can use it.</p>
+<p>Imagine you’ve downloaded Instagram from your smartphone’s app store. It downloaded fine, and now you want to use it. How do you open it? You click on it. In just the same way, once we’ve installed a package in R, we need to tell it to open up the package so we can use it.</p>
 <p>We do this by using the <code>library()</code> function which takes the unquoted name of the package as an <strong>input argument</strong>. The <strong>ouput</strong> is the loaded package, meaning that you now have the full functionality of the package at your disposal.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <p>When you run this line of code, it is very common to receive some messages from R. For example, look at what popped up in my console when I run this code:</p>
@@ -586,29 +586,31 @@ Solution
 <img src="tidy.png" />
 
 </div>
-<p>This is not an error. It's just R letting you know which packages it has attached (remember that tidyverse is a package made up of other packages). There are also a number of functions within Tidyverse that have the same names as other functions, which results in the section called &quot;Conflicts&quot;. These don't overwrite the pre-existing ones, but make the Tidyverse ones the default ones to use.</p>
+<p>This is not an error. It’s just R letting you know which packages it has attached (remember that tidyverse is a package made up of other packages). There are also a number of functions within Tidyverse that have the same names as other functions, which results in the section called “Conflicts”. These don’t overwrite the pre-existing ones, but make the Tidyverse ones the default ones to use.</p>
 <p>It is really important to get used to reading and interpreting the messages that R gives you, as you may run into errors when setting up your R environment.</p>
 </div>
 </div>
 <div id="interpreting-common-set-up-errors" class="section level2">
 <h2>Interpreting Common Set Up Errors</h2>
-<p>Let's go back to our baking example. Imagine that you want to bake chocolate brownies. You have laid out your ingredients, utensils, and recipe on the kitchen counter and you're ready to get started. The first step of the recipe tells you to mix eggs, flour, and sugar in a large mixing bowl. But, you forgot to pick up flour so you can't execute this action.</p>
+<p>Let’s go back to our baking example. Imagine that you want to bake chocolate brownies. You have laid out your ingredients, utensils, and recipe on the kitchen counter and you’re ready to get started. The first step of the recipe tells you to mix eggs, flour, and sugar in a large mixing bowl. But, you forgot to pick up flour so you can’t execute this action.</p>
 <hr />
-<p><strong>This is essentially what happens when you receive an error in R. R is attempting to carry out the action that you asked it to, but it hasn't got all the necessary ingredients. So, when things don't go to plan, R spits out an error message which is commonly printed in red text and preceeded with the tag <code>Error:</code></strong></p>
+<p><strong>This is essentially what happens when you receive an error in R. R is attempting to carry out the action that you asked it to, but it hasn’t got all the necessary ingredients. So, when things don’t go to plan, R spits out an error message which is commonly printed in red text and preceeded with the tag <code>Error:</code></strong></p>
 <hr />
-<p>An error message isn't something to get anxious about, you haven't broken the computer! Error messages are simply R's way of letting you know that something isn't quite right and it is the only way R can bring problems to your attention. R is genuinely trying to help you!</p>
-<p>However, error messages can be frustrating. So, it's important to develop skills and confidence in understanding and interpreting error messages so you can resolve them quickly and effectively.</p>
-<p>Let's have some practice at interpreting and resolving common errors you are likely to experience during the set up of your R environment.</p>
+<p>An error message isn’t something to get anxious about, you haven’t broken the computer! Error messages are simply R’s way of letting you know that something isn’t quite right and it is the only way R can bring problems to your attention. R is genuinely trying to help you!</p>
+<p>However, error messages can be frustrating. So, it’s important to develop skills and confidence in understanding and interpreting error messages so you can resolve them quickly and effectively.</p>
+<p>Let’s have some practice at interpreting and resolving common errors you are likely to experience during the set up of your R environment.</p>
+<p><br></p>
 <div id="object-package-name-not-found" class="section level3">
-<h3>&quot;Object <code>package name</code> not found&quot;</h3>
-<p>I tried to run this line of code...</p>
+<h3>“Object <code>package name</code> not found”</h3>
+<p><br></p>
+<p>I tried to run this line of code…</p>
 <pre class="r"><code>install.packages(tidyverse)</code></pre>
-<p>and got this error...</p>
+<p>and got this error… <br></p>
 <div class="figure">
 <img src="installerror.png" />
 
 </div>
-<p>How can I debug this code?</p>
+<p><br> How can I debug this code? <br></p>
 <div class="solution">
 <button>
 Hint
@@ -619,38 +621,37 @@ Hint
 <button>
 Solution
 </button>
+<p><br></p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
 </div>
+<p><br></p>
 </div>
 <div id="there-is-no-package-called-package-name" class="section level3">
-<h3>&quot;There is no package called <code>package name</code>&quot;</h3>
-<p>Can you spot why this code...</p>
+<h3>“There is no package called <code>package name</code>”</h3>
+<p><br> Can you spot why this code…</p>
 <pre class="r"><code>library(tidyvere)</code></pre>
-<p>...gives me this error?</p>
-<p><img src="tidyerror.png" /> <br></p>
+<p>…gives me this error?</p>
+<p><br> <img src="tidyerror.png" /> <br></p>
 <div class="solution">
 <button>
 Hint
 </button>
-<p>R is very particular about spelling. R can't guess what you mean!</p>
+<p>R is very particular about spelling. R can’t guess what you mean!</p>
 </div>
-<p><br></p>
 <div class="solution">
 <button>
 Solution
 </button>
 <pre class="r"><code>library(tidyverse) </code></pre>
 </div>
+<p><br></p>
 </div>
 <div id="unexpected-symbol" class="section level3">
-<h3>&quot;Unexpected symbol&quot;</h3>
-<p>How can I fix the code below...</p>
+<h3>“Unexpected symbol”</h3>
+<p>How can I fix the code below…</p>
 <pre class="r"><code>library(tidyverse</code></pre>
-<p>...so that I don't get this error?</p>
-<div class="figure">
-<img src="liberror.png" />
-
-</div>
+<p>…so that I don’t get this error? <br></p>
+<p><img src="liberror.png" /> <br></p>
 <div class="solution">
 <button>
 Hint
@@ -668,11 +669,11 @@ Solution
 </div>
 <div id="how-to-ask-r-for-more-help" class="section level2">
 <h2>How to ask R for more help</h2>
-<p>Whenever you don't quite understand what a specific function does, or you're stumped on why you're getting an error, use the R Help menu.</p>
+<p>Whenever you don’t quite understand what a specific function does, or you’re stumped on why you’re getting an error, use the R Help menu.</p>
 <p>You can directly call the help menu by typing <code>?name of function/package</code> into your console.</p>
 <hr />
 <p><strong>Great! You now know how the R environment is structured, you are aware of the difference between .R and .Rmd files, and you know how to use functions to load in packages. You have also had a go at resolving some common set up errors.</strong></p>
-<p><strong>We are now ready to begin using tidyverse!</strong></p>
+<p><strong>We are now ready to begin using <code>tidyverse</code>!</strong></p>
 <hr />
 </div>
 
@@ -714,26 +715,6 @@ solveme_func = function(e) {
   } else {
     cl.remove("correct");
   }
-
-  // match numeric answers within a specified tolerance
-  if(this.dataset.tol){
-    var tol = JSON.parse(this.dataset.tol);  
-    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
-    if (matches.reduce((a, b) => a + b, 0) > 0) {
-      cl.add("correct");
-    } else {
-      cl.remove("correct");
-    }  
-  }
-
-  // added regex bit
-  if (cl.contains("regex")){
-    answer_regex = RegExp(real_answers.join("|"))
-    if (answer_regex.test(my_answer)) {
-      cl.add("correct");
-    }  
-  }
-  
   update_total_correct();
 }
 
