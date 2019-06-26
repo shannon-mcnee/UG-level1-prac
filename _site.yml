@@ -1,0 +1,12 @@
+name: "Level One Psychology Practical Support"
+output_dir: "docs"
+navbar:
+  title: "Level One Psychology Practical Support"
+  left:
+    - text: "Home"
+      href: index.html
+output:
+  webex::webex_default:
+    theme: cosmo
+    toc: true
+    toc_float: true

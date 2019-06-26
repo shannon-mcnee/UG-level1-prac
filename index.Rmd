@@ -1,0 +1,36 @@
+---
+title: "Web Exercises"
+output: webex::webex_default
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if (!requireNamespace("webex")) {
+  stop("You must have the 'webex' package installed to knit HTML from this template.\n   devtools::install_github(\"psyteachr/webex\")")
+} else {
+  library("webex")
+}
+```
+
+<br>
+
+The aim of this resource is to provide you with hints, tips, and support based on questions from previous Level One students.
+
+[Setting Up](Setting_up.html) introduces you to the R environment, different file types, and teaches you how to resolve common set up errors.
+
+[Introduction to Tidyverse and Data Visualisation](Intro_Tidyverse.html) introduces you to the R package `tidyverse`, highlighting how we can use the 'Wickham Six' to make data analysis enjoyable and produce beautiful data visualisations. 
+
+<br>
+
+## Installing R on your own device 
+
+If you are using your **own device** and have yet to install R and R studio, please use [this](https://psyteachr.github.io/hack-your-data/r_instructions.html) guide to help you get started. 
+
+<br>
+
+## Other sources of help 
+
+Learning R for the first time can be daunting. It's important to remember that probably everyone is **feeling the same way**. Some of our postgraduates spoke recently about the challenges they faced in learning R for the first time, and how these challenges made their successes even better. Listen to our podcast [here](https://psyteachr.github.io/hack-your-data/podcast.html). 
+
+Check out the Level One Psychology Slack Channel (*add link*) and Moodle page (*add link*) for further support with the practical element of this course. 
+
