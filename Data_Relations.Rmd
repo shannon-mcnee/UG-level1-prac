@@ -503,4 +503,4 @@ Well done! You now have an understanding of **data relations** and the various w
 
 * [Chapter 13: Relational Data](https://r4ds.had.co.nz/relational-data.html) in _R for Data Science_
 
-.gif credit: [Garrick Aden-Buie](https://gist.github.com/gadenbuie)
+GIF credit: [Garrick Aden-Buie](https://gist.github.com/gadenbuie)
