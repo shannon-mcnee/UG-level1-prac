@@ -496,3 +496,9 @@ knitr::kable(sd)
 Well done! You now have an understanding of **data relations** and the various ways R can help you to combine data from multiple sources to help keep your analysis path clean and tidy. 
 
 ******
+
+## Additional Resources
+
+* [Cheatsheet for join functions](http://stat545.com/bit001_dplyr-cheatsheet.html) 
+
+* [Chapter 13: Relational Data](https://r4ds.had.co.nz/relational-data.html) in _R for Data Science_
