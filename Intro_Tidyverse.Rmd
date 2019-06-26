@@ -172,7 +172,7 @@ Okay, so there's quite a bit to take in here so let's break it down into English
 
 ******
 
-Pause here and test your knowledge of the verbs you have learned so far! 
+**Pause here and test your knowledge of the verbs you have learned so far!**
 
 * What does `gather()` do? 
 
@@ -249,7 +249,7 @@ The last line of code just helps me make the table that you see below.
 
 So from that expansive, messy dataset we now have the 10 most common descriptors provided by participants across 50 different faces! 
 
-Let's pause here and test our knowledge on `group_by()`, `summarise()`, and `arrange()`.
+**Let's pause here and test our knowledge on `group_by()`, `summarise()`, and `arrange()`.**
 
 * What does `group_by()` do? 
 
