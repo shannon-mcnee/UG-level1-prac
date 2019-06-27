@@ -18,8 +18,6 @@ The aim of this resource is to provide you with hints, tips, and support based o
 
 You can then build upon your knowledge of `tidyverse` verbs in [Data Relations](Data_Relations.html). 
 
-A Glossary of key `tidyverse` functions is also provided alongside tips and advice on how to use Google to your advantage when looking for coding support! 
-
 <br>
 
 ## Installing R on your own device 
