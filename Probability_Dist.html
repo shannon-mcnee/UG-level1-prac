@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Probability Distributions</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="webex.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Level One Psychology Practical Support</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Setting_up.html">Setting Up</a>
+</li>
+<li>
+  <a href="Intro_Tidyverse.html">Introduction to Tidyverse and Data Visualisation</a>
+</li>
+<li>
+  <a href="Data_Relations.html">Data Relations</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Probability Distributions</h1>
+
+</div>
+
+
+<div id="what-is-probability" class="section level2">
+<h2>What is Probability?</h2>
+<p>Probability is a way of expressing knowledge or belief than an event will occur. We represent this knowledge by a real number <code>p</code> which can only fall between the values of 0 and 1 (i.e. 0% to 100%).</p>
+<p>Probability of any discrete event can be formulated as follows:</p>
+<p><span class="math display">\[p = \frac{number \  of  \ ways \ the \ event \ could \  arise}{number \ of \ possible \ outcomes}\]</span></p>
+<p>For example, what is the probability of flipping a fair coin (i.e. equal chance of getting heads or tails) and it landing on heads?</p>
+<p>This can be presented in the following formula:</p>
+<pre class="r"><code>p &lt;- 1/2 
+
+# number of ways the event could arise = 1 (it can only be heads or tails, not both) 
+# number of possible outcomes = 2 (there are only two possible outcomes when we flip a coin, heads or tails) </code></pre>
+</div>
+<div id="what-is-joint-probability" class="section level2">
+<h2>What is Joint Probability?</h2>
+<p>Describing the probability of single events, such as the probability of heads on a single coin flip, is easy. However, more often than not, we are interested in the probability of a <strong>collection of events</strong>, such as the number of heads out of 10 flips.</p>
+<p>So, let’s say we flip a coin 10 times. Assuming the coin is fair (probability of heads = .5), we can ask questions such as: what is the probability that we get heads on exactly one out of the 10 coin flips? From this, we can begin to build a <strong>probability distribution</strong>.</p>
+</div>
+<div id="what-is-a-probability-distribution" class="section level2">
+<h2>What is a Probability Distribution?</h2>
+<p>A probability distribution is a table, figure, or equation that links each <strong>outcome</strong> of a statistical experiment with its <strong>probability of occurence</strong>.</p>
+<p>In R, we can easily run thousands of simulations of our coin flip experiment in order to see the probability of getting X amount of heads out of 10 flips of a fair coin. Check out the animation below which plots the results of 1000 simulations of flipping a coin 10 times!</p>
+<div class="figure">
+<img src="binomial_dist.gif" />
+
+</div>
+<p>The animation above is 1000 different figures linked together, based on the <code>sample()</code> function, which samples elements from a vector, <code>x</code>. A vector is a sequence of data elements of the same basic type. Members in a vector are officially called components. Let’s define a vector using 0 for heads and 1 for tails, and take 10 samples from it.</p>
+<pre class="r"><code>sample(x = 0:1, size = 10, replace = TRUE) 
+
+# 0:1 means all numbers from 0 to 1 in steps of 1.</code></pre>
+<p>What you have done here is tell R that you want to sample observations from a set of data, which in this case was our vector <code>x = 0:1</code>. <code>size</code> tells R the number of samples you want to take. We chose four, which is larger than the size of the vector itself (it has only two components; 0 - heads, 1 - tails). For this reason we need to override the default setting of <code>replace</code>, which is sampling without replacement. Sampling without replacement means that once an observation appears in the sample, it is removed from the source vector so that it can’t be drawn again. Sampling with replacement means that an observation is retained so it can be drawn again. In this case, if we don’t override the default it would mean that if we tossed HEADS we wouldn’t be able to toss the coin and get HEADS again and we would get an error message because we’ve asked for more observations than are possible (we override this by setting replace to <code>TRUE</code>).</p>
+<p>We can then <code>replicate()</code> this sampling as many times as we like:</p>
+<pre class="r"><code>replicate(n = 1000, expr = sample(0:1, 10, TRUE) %&gt;% sum())</code></pre>
+<p>We can then put this information into a tibble, and work out the probability of each occurence:</p>
+<pre class="r"><code>heads &lt;- replicate(n = 1000, expr = sample(0:1, 10, TRUE) %&gt;% sum())
+
+data_heads &lt;- tibble(heads = heads) %&gt;%   
+                group_by(heads) %&gt;%           
+                summarise(n = n(), p=n/1000)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">heads</th>
+<th align="right">n</th>
+<th align="right">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">12</td>
+<td align="right">0.012</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">38</td>
+<td align="right">0.038</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">117</td>
+<td align="right">0.117</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">200</td>
+<td align="right">0.200</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">272</td>
+<td align="right">0.272</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">209</td>
+<td align="right">0.209</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">107</td>
+<td align="right">0.107</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">35</td>
+<td align="right">0.035</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">8</td>
+<td align="right">0.008</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">0.002</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Pause and test your knowledge</strong></p>
+<ul>
+<li>What is the most common number of heads observed across 1000 simulations of 10 coin flips?</li>
+</ul>
+<p><input class='solveme nospaces' size='1' data-answer='["6","5","3"]'/></p>
+<ul>
+<li>Can you explain your answer based on what you know about the coin?</li>
+</ul>
+<hr />
+<p>It is important to remember, however, that probability is a bit more complex than just counting and dividing. We need to be mindful of the <strong>type</strong> of data we are working with and what the means for the kind of probability distributions we can make.</p>
+</div>
+<div id="levels-of-measurement" class="section level2">
+<h2>Levels of Measurement</h2>
+<p>Flipping a coin gives us a <strong>discrete</strong> value. We either land on heads or we land on tails. However, the data that we work with as Psychologists isn’t always this straight-forward. We also work with <strong>continuous</strong> data. This is also referred to as <code>Level of Measurements</code>.</p>
+<p><strong>Discrete</strong> data can only take integer values (whole numbers). For example, the number of participants in an experiment would be discrete - we can’t have half a participant! Discrete variables can also be further broken down into <strong>nominal</strong> and <strong>ordinal</strong> variables.</p>
+<p><strong>Ordinal</strong> data is a set of ordered categories; you know which is the top/best and which is the worst/lowest, but not the difference between categories. For example, you could ask participants to rate the attractiveness of different faces based on a 5-item Likert scale (very unattractive, unattractive, neutral, attractive, very attractive). You know that very attractive is better than attractive but we can’t say for certain that the difference between neutral and attractive is the same size as the distance between very unattractive and unattractive. <strong>Nominal</strong> data is also based on a set of categories but the ordering doesn’t matter (e.g. left or right handed). Nominal is sometimes simply refered to as <code>categorical</code> data.</p>
+<p><strong>Continuous</strong> data on the other hand can take any value. For example, we can measure age on a continuous scale (e.g. we can have an age of 26.55 years), other examples include reaction time or the distance you travel to university every day. Continuous data can be broken down into <strong>interval</strong> or <strong>ratio</strong> data.</p>
+<p><strong>Interval</strong> data is data which comes in the form of a numerical value where the difference between points is standardised and meaningful. For example temperature, the difference in temperature between 10-20 degrees is the same as the difference in temperature between 20-30 degrees.</p>
+<p><strong>Ratio</strong> data is very like interval but has a true zero point. With our interval temperature example above, we have been experiencing negative temperatures (-1,-2 degrees) in Glasgow but with ratio data you don’t see negative values such as these i.e. you can’t be -10 cm tall.</p>
+<p>When you read journal articles or when you are working with data in the lab, it is really good practice to take a minute or two to figure out the type of variables you are reading about and/or working with because<strong>the type of data we have effects the type of Probability Distribution we can use</strong>.</p>
+</div>
+<div id="types-of-probability-distribution" class="section level2">
+<h2>Types of Probability Distribution</h2>
+<p>In the labs, you will be introduced to <strong>two</strong> types of probability distribution: <strong>binomial</strong> distribution and <strong>normal</strong> distribution.</p>
+<p><strong>Binomial Distribution:</strong> A frequency distribution which calculates probabilities of success for situations where there are two possible outcomes. A binomial distribution models the probability of any number of successes being observed, given the probability of a success and the number of observations. Binomial distributions represent <strong>discrete</strong> data (e.g. flipping a coin).</p>
+<p><strong>Normal Distribution:</strong> A distribution of data in which the majority of data points are relatively similar, occuring within a small range of values. When data are normally distributed, plotting them on a graph results in a distinctive <strong>bell-shaped curve</strong>. Normal distributions represent <strong>continuous</strong> data (e.g. height of students in the 2019-20 Level 1 Psychology cohort).</p>
+<hr />
+<p><strong>Pause here and test your knowledge</strong></p>
+<p>What kinds of data are the following examples?</p>
+<ul>
+<li>Time taken to hike Ben Nevis (in hours): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>interval</option> <option>ordinal</option> <option>categorical</option> <option>ratio</option></select></li>
+<li>Finishing position in descent from the peak of Ben Nevis (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>categorical</option> <option>interval</option></select></li>
+<li>Difference in temperature at the peak of Ben Nevis to the foot of Ben Nevis (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>categorical</option> <option>interval</option></select></li>
+<li>The name of the climbing expedition group: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>categorical</option> <option>ordinal</option> <option>interval</option> <option>ratio</option></select></li>
+</ul>
+<hr />
+</div>
+<div id="binomial-probability-distribution" class="section level2">
+<h2>Binomial Probability Distribution</h2>
+<p>Remember, the binomial distribution is useful for modeling <strong>binary</strong> data, where each observation can have one of two outcomes, like success/failure, yes/no or head/tails.</p>
+<p>We’ll use 3 functions to work with the binomial distribution:</p>
+<p><code>dbinom()</code> - the density function: gives you the probability of x successes given the number of trials and the probability of success on a single trial (e.g., what’s the probability of flipping 8/10 heads with a fair coin?).</p>
+<p><code>pbinom()</code> - the distribution function: gives you the cumulative probability of getting a number of successes below a certain cut-off point (e.g. probability of getting 0 to 5 heads out of 10 flips), given the size and the probability. This is known as the cumulative probability distribution function or the cumulative density function.</p>
+<p><code>qbinom()</code> - the quantile function: is the inverse of pbinom in that it gives you the x axis value below (and including the value) which the summation of probabilities is greater than or equal to a given probability p, plus given the size and prob.</p>
+<div id="dbinom" class="section level3">
+<h3><code>dbinom()</code></h3>
+<p><code>dbinom()</code> is structured in the following way:</p>
+<p><code>dbinom(x, size, prob)</code></p>
+<ul>
+<li><code>x</code>: vector of quantiles (e.g. how many heads)</li>
+<li><code>size</code>: number of trials (e.g. how many flips of the coin)</li>
+<li><code>prob</code>: the probability of success on each trial (e.g. 0.5 for a fair coin)</li>
+</ul>
+<p>So, if we wanted to find out the probability of getting exactly 8 heads out of 10 coin flips we can do the following:</p>
+<pre class="r"><code>dbinom(x = 8, size = 10, prob = 0.5)</code></pre>
+<pre><code>## [1] 0.04394531</code></pre>
+<p>The probability of getting 8 heads out of 10 flips of a fair coin is 0.04 (two decimal places).</p>
+<hr />
+<p><strong>Pause here and test your knowledge</strong></p>
+<ul>
+<li>What would be the appropriate code to find out the probability of getting exactly 8 heads out of 10 flips on a <strong>biased</strong> coin (i.e. there is not a 50/50 chance of getting heads or tails).</li>
+</ul>
+<p><select class='solveme' data-answer='["dbinom(x = 8, size = 10, prob = 0.8)"]'> <option></option> <option>dbinom(x = 10, size = 8, prob = 0.8)</option> <option>dbinom(x = 8, size = 10, prob = 0.8)</option> <option>dbinom(x = 10, size = 8, prob = 0.5)</option></select></p>
+<hr />
+</div>
+<div id="pbinom" class="section level3">
+<h3><code>pbinom()</code></h3>
+<p><code>pbinom()</code> is structured in the following way:</p>
+<p><code>pbinom(q, size, prob, lower.tail)</code></p>
+<ul>
+<li><code>q</code>: In <code>dbinom()</code>, <code>x</code> was a fixed number whereas <code>q</code> is <strong>cumulative</strong> (e.g. all the possibilites up to a certain cut off point).</li>
+<li><code>size</code>: number of trials (e.g. number of coin flips)</li>
+<li><code>prob</code>: probability of success on each trial</li>
+<li><code>lower.tail</code>: if TRUE (default) probabilities are focused on the lower half of the binomial distribution. If FALSE, probabilities are focused on the upper half of the binomial distribution.</li>
+</ul>
+<p>Say we want to know the <strong>cumulative</strong> probability of getting 8 heads out of 10 flips, we would do the following:</p>
+<pre class="r"><code>pbinom(q = 7, size = 10, prob = .5, lower.tail = FALSE)</code></pre>
+<pre><code>## [1] 0.0546875</code></pre>
+<pre class="r"><code>#q = 7 as we want the CUMULATIVE probability </code></pre>
+<hr />
+<p>Try out the app below to experiment with different numbers of coin flips and probabilities and see how this influences the number of heads:</p>
+<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="672" height="800px">
+</iframe>
+<hr />
+</div>
+<div id="qbinom" class="section level3">
+<h3><code>qbinom()</code></h3>
+<p>Now, imagine that you suspect that the coin is biased against heads. Your null hypothesis is that the coin is not biased against heads (P(heads)=.5).You are going to run a single experiment to test your hypothesis, with 10 trials. What is the minimum number of successes that is acceptable if you want to keep your chances of getting heads for this type of experiment at .05? This is where <code>qbinom()</code> comes in.</p>
+<p><code>qbinom()</code> is structured as follows:</p>
+<p><code>qbinom(p, size, prob)</code></p>
+<ul>
+<li><code>p</code>: the overall probability of success across all trials</li>
+<li><code>size</code>: the number of trials (e.g. coin flips)</li>
+<li><code>prob</code>: probability of success on any single trial</li>
+</ul>
+<pre class="r"><code>qbinom(p = .05, size = 10, prob = .5)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code># p = .05 as we want the overall probability of success on this trial to be kept at .05
+# size = 10 as we are flipping the coin 10 times 
+# prob = .5 as we are testing our null hypothesis that the probability of getting heads on any single coin flip is .5</code></pre>
+<p>The answer is <strong>2</strong>. So, if you got <strong>fewer</strong> than two heads, you would <strong>reject</strong> the null hypothesis that the coin was unbiased against heads.</p>
+<p>We can adjust the <code>size</code> argument to find out how many heads we would need on 100, 1000, or 10000 trials.</p>
+<pre class="r"><code>qbinom(p = .05, size = c(100,1000,10000), prob = .5)</code></pre>
+<pre><code>## [1]   42  474 4918</code></pre>
+<hr />
+<p><strong>Pause here and test your knowledge</strong></p>
+<p>Which <strong>function</strong> would I use to answer the following questions?</p>
+<ul>
+<li>What is the minimum number of successes to keep chances of getting heads at .01?</li>
+</ul>
+<p><input class='solveme nospaces' size='8' data-answer='["pbinom()","qbinom()","dbinom()"]'/></p>
+<ul>
+<li>What is the probability of getting exactly 25 heads out of 100 coin flips?</li>
+</ul>
+<p><input class='solveme nospaces' size='8' data-answer='["dbinom()","qbinom()","pbinom()"]'/></p>
+<ul>
+<li>What is the probability of getting less than 5 heads out of 10 coin flips?</li>
+</ul>
+<p><input class='solveme nospaces' size='8' data-answer='["dbinom()","qbinom()","pbinom()"]'/></p>
+<hr />
+<p>So, the binomial distribution can tell us about <strong>discrete</strong> events - it is <strong>binary</strong>. We can use this distribution to talk about events with only <strong>two</strong> possible outcomes (e.g. heads/tails, pass/fail, yes/no).</p>
+<p>There is a finite amount of events in a binomial distribution which means it often doesn’t suit our needs for more complex questions.</p>
+<p>This is where the <strong>normal distribution</strong> comes in.</p>
+</div>
+</div>
+<div id="normal-distribution" class="section level2">
+<h2>Normal Distribution</h2>
+<p>The normal distribution reflects the probability of any value occuring for a <strong>continuous</strong> variable (e.g. height, age) on which an individual can score anywhere along a continuum.</p>
+<hr />
+<p>The main difference between the binomial distribution and normal distribution is that the binomial distribution is concerned with <strong>discrete</strong> data and the normal distribution is concerned with <strong>continuous</strong> data.</p>
+<hr />
+<p>The normal distribution can be visualised using a density plot and has a distinctive bell-shaped curve.</p>
+<div class="figure">
+<img src="normal_dist.gif" />
+
+</div>
+<p>We’ll use three functions to work with the normal distribution:</p>
+<p><code>dnorm()</code>-the density function, for calculating the probability of a specific value</p>
+<p><code>pnorm()</code>-the probability or distribution function, for calculating the probability of getting at least or at most a specific value</p>
+<p><code>qnorm()</code>-the quantile function, for calculating the specific value associated with a given probability</p>
+<p>As you can probably see, these functions are very similar to the functions we’ve already come across when working with the binomial distribution.</p>
+<hr />
+<p>Remember, if you are ever unsure about what a function does, type: <code>?name of function</code> into your console.</p>
+<hr />
+<p>Imagine you are a vet and you want to develop an understanding of the distribution of weight among two breeds of dog that you regularly treat at your surgery: boxers and labrador retrievers.</p>
+<p>You have found that the average weight of a boxer is 62.5lbs with a standard deviation of 12.5lbs. The average weight of a labrador retriever is 70lbs with a standard deviation of 10lbs.</p>
+<div id="dnorm" class="section level3">
+<h3><code>dnorm()</code></h3>
+<p>We can use <code>dnorm()</code> to draw the <em>curve</em> that we can use to calculate our probabilities. It tells us the <em>height</em> of the curve at a specific value. It is structured as follows:</p>
+<p><code>dnorm(x, mean, sd)</code></p>
+<ul>
+<li><code>x</code>: a vector of quantiles (e.g. a specific weight value)</li>
+<li><code>mean</code>: a vector of means (e.g. in our example, the average weight of a given breed)</li>
+<li><code>sd</code>: a vector of standard deviations (e.g. in our example, the standard deviation of weight for a given breed)</li>
+</ul>
+<p>Let’s take what we know about boxers for now. We know that boxers have an average weight of 62.5lbs with a standard deviation of 12.5lbs. What is the height of our curve for boxer weighing 50lbs?</p>
+<pre class="r"><code>dnorm(x = 50, mean = 62.5, sd= 12.5)</code></pre>
+<pre><code>## [1] 0.01935766</code></pre>
+</div>
+<div id="pnorm" class="section level3">
+<h3><code>pnorm()</code></h3>
+<p><code>pnorm()</code> is the distribution function which calculates the probability of getting at least, or at most, a specific value. It is structured as follows:</p>
+<p><code>pnorm(q, mean, sd, lower.tail)</code></p>
+<ul>
+<li><code>q</code>: vector of quantiles (e.g. a specific weight value)</li>
+<li><code>mean</code>: a vector of means (e.g the mean weight of a given breed)</li>
+<li><code>sd</code>: a vector of standard deviations (e.g. the standard deviation of weight for a given breed)</li>
+<li><p><code>lower.tail</code>: if TRUE (default) probabilities are focused on the lower half of the normal distribution. If FALSE, probabilities are focused on the upper half of the normal distribution.</p></li>
+<li><p>What is the probability of treating a boxer that weighs more than the average labrador retriever?</p></li>
+</ul>
+<pre class="r"><code>pnorm(q = 70, mean = 62.5, sd = 12.5, lower.tail = FALSE)</code></pre>
+<pre><code>## [1] 0.2742531</code></pre>
+<p>Here, <code>q</code> is the <strong>average</strong> weight of a labrador retriever whilst we use the <code>mean</code> and <code>sd</code> weight for boxers. As we want to know the probability of a boxer weighing <strong>more</strong> than a labrador retriever, we set <code>lower.tail</code> to <code>FALSE</code>.</p>
+<ul>
+<li>You want to make sure that the boxers you treat at the clinic are a healthy weight for their size. Out of 20 boxers treated by the clinic in the past 6 months, what proportion weighed <em>less</em> than labrador retrievers?</li>
+</ul>
+<pre class="r"><code>20 * pnorm(70, 62.5, 12.5, lower.tail = FALSE)</code></pre>
+<pre><code>## [1] 5.485062</code></pre>
+<p>Here, <code>q</code> is the <strong>average</strong> weight of a labrador retriever whilst we use the <code>mean</code> and <code>sd</code> weight of boxers. We set <code>lower.tail</code> to TRUE because we want to know what proportion of boxers weigh <em>less than</em> 70lbs. We multiply this by 20 because the clinic treated 20 boxers and we want to find out how many of those 20 boxers weighed less than the average labrador retriever.</p>
+</div>
+<div id="qnorm" class="section level3">
+<h3><code>qnorm()</code></h3>
+<p><code>qnorm()</code> allows us to calculate a specific value associated with a given probability. It is structured as follows:</p>
+<p><code>qnorm(p, mean, sd, lower.tail)</code></p>
+<ul>
+<li><code>p</code>: vector of probabilities (e.g. overall probability)</li>
+<li><code>mean</code>: a vector of means (e.g. the mean weight of a given breed)</li>
+<li><code>sd</code>: a vector of standard deviations (e.g. the standard deviation of weight for a given breed)</li>
+<li><p><code>lower.tail</code>: if TRUE (default) probabilities are focused on the lower half of the normal distribution. If FALSE, probabilities are focused on the upper half of the normal distribution.</p></li>
+<li><p>What would a labrador retriever have to weigh to be in the top 10% of the weight distribution for labrador retrievers treated by the clinic?</p></li>
+</ul>
+<pre class="r"><code>qnorm(p = 0.10, mean = 70, sd = 10, lower.tail = FALSE)</code></pre>
+<pre><code>## [1] 82.81552</code></pre>
+<hr />
+<p><strong>Pause here and test your knowledge</strong></p>
+<p>Type in the correct code to answer the following questions about <code>pnorm()</code> and <code>qnorm()</code>.</p>
+<p><strong>Note:</strong> text boxes are case sensitive and responses should be structured in the following format: <code>function_name(q/p = X, mean = X, sd = X, lower.tail = X)</code></p>
+<ul>
+<li>What is the probability of treating a labrador retriever that weighs <strong>less</strong> than the average boxer?</li>
+</ul>
+<p><input class='solveme nospaces' size='54' data-answer='["pnorm(q = 62.5, mean = 70, sd = 10, lower.tail = TRUE)"]'/></p>
+<ul>
+<li>Out of 15 labrador retrievers treated by the clinic in the last 6 months, what proportion weighed <strong>more</strong> than the average boxer?</li>
+</ul>
+<p><input class='solveme nospaces' size='60' data-answer='["15 * pnorm(q = 62.5, mean = 70, sd = 10, lower.tail = FALSE)"]'/></p>
+<ul>
+<li>What would a boxer have to weigh to be in the top 5% of of the weight distribution for boxers treated by the clinic?</li>
+</ul>
+<p><input class='solveme nospaces' size='59' data-answer='["qnorm(p = 0.05, mean = 62.5, sd = 12.5, lower.tail = FALSE)"]'/></p>
+<hr />
+<p>Well done! You have now got to grips with levels of measurement, different types of probability distributions, and the functions we use to work with them!</p>
+</div>
+</div>
+<div id="additional-resources" class="section level2">
+<h2>Additional Resources</h2>
+<p>If you want more detail on the mechanics behind the binomial and normal distributions, check out these resources below:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qIzC1-9PwQo">Introduction to the Binomial Distribution</a></li>
+<li><a href="https://www.youtube.com/watch?v=iYiOVISWXS4">Introduction to the Normal Distribution</a></li>
+</ul>
+</div>
+
+<script>
+
+/* update total correct if #total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("correct").length + " of " +
+      document.getElementsByClassName("solveme").length + " correct";
+  }
+}
+
+/* solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "");
+  }
+  
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("correct");
+  } else {
+    cl.remove("correct");
+  }
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+  
+  /* set up solveme inputs */
+  var solveme = document.getElementsByClassName("solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+    
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+    
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  update_total_correct();
+}
+
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

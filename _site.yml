@@ -11,6 +11,8 @@ navbar:
       href: Intro_Tidyverse.html
     - text: "Data Relations"
       href: Data_Relations.html
+    - text: "Probability" 
+      href: Probability_Dist.html
 output:
   html_document:
     css: webex.css
