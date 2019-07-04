@@ -461,54 +461,59 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">1</td>
-<td align="right">11</td>
-<td align="right">0.011</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">45</td>
-<td align="right">0.045</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">102</td>
-<td align="right">0.102</td>
-</tr>
-<tr class="even">
+<td align="right">0</td>
 <td align="right">4</td>
-<td align="right">202</td>
-<td align="right">0.202</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">261</td>
-<td align="right">0.261</td>
+<td align="right">0.004</td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
-<td align="right">195</td>
-<td align="right">0.195</td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="right">116</td>
-<td align="right">0.116</td>
-</tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="right">56</td>
-<td align="right">0.056</td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="right">11</td>
-<td align="right">0.011</td>
-</tr>
-<tr class="even">
-<td align="right">10</td>
 <td align="right">1</td>
-<td align="right">0.001</td>
+<td align="right">5</td>
+<td align="right">0.005</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">41</td>
+<td align="right">0.041</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">99</td>
+<td align="right">0.099</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">204</td>
+<td align="right">0.204</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">287</td>
+<td align="right">0.287</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">191</td>
+<td align="right">0.191</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">115</td>
+<td align="right">0.115</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">47</td>
+<td align="right">0.047</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">4</td>
+<td align="right">0.004</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">3</td>
+<td align="right">0.003</td>
 </tr>
 </tbody>
 </table>
@@ -543,10 +548,10 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <p><strong>Pause here and test your knowledge</strong></p>
 <p>What kinds of data are the following examples?</p>
 <ul>
-<li>Time taken to hike Ben Nevis (in hours): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>interval</option> <option>categorical</option></select></li>
-<li>Finishing position in descent from the peak of Ben Nevis (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>interval</option> <option>categorical</option></select></li>
-<li>Difference in temperature at the peak of Ben Nevis to the foot of Ben Nevis (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>categorical</option> <option>ordinal</option> <option>ratio</option> <option>interval</option></select></li>
-<li>The name of the climbing expedition group: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>interval</option> <option>categorical</option> <option>ordinal</option> <option>ratio</option></select></li>
+<li>Time taken to hike Ben Nevis (in hours): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>interval</option> <option>ratio</option> <option>categorical</option> <option>ordinal</option></select></li>
+<li>Finishing position in descent from the peak of Ben Nevis (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>categorical</option> <option>interval</option></select></li>
+<li>Difference in temperature at the peak of Ben Nevis to the foot of Ben Nevis (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>categorical</option> <option>ratio</option> <option>interval</option></select></li>
+<li>The name of the climbing expedition group: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>interval</option> <option>categorical</option></select></li>
 </ul>
 <hr />
 </div>
@@ -575,7 +580,7 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <ul>
 <li>What would be the appropriate code to find out the probability of getting exactly 8 heads out of 10 flips on a <strong>biased</strong> coin (i.e. there is not a 50/50 chance of getting heads or tails).</li>
 </ul>
-<p><select class='solveme' data-answer='["dbinom(x = 8, size = 10, prob = 0.8)"]'> <option></option> <option>dbinom(x = 8, size = 10, prob = 0.8)</option> <option>dbinom(x = 10, size = 8, prob = 0.8)</option> <option>dbinom(x = 10, size = 8, prob = 0.5)</option></select></p>
+<p><select class='solveme' data-answer='["dbinom(x = 8, size = 10, prob = 0.8)"]'> <option></option> <option>dbinom(x = 10, size = 8, prob = 0.8)</option> <option>dbinom(x = 10, size = 8, prob = 0.5)</option> <option>dbinom(x = 8, size = 10, prob = 0.8)</option></select></p>
 <hr />
 </div>
 <div id="pbinom" class="section level3">
@@ -623,7 +628,7 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <ul>
 <li>What is the minimum number of successes to keep chances of getting heads at .01?</li>
 </ul>
-<p><input class='solveme nospaces' size='8' data-answer='["dbinom()","pbinom()","qbinom()"]'/></p>
+<p><input class='solveme nospaces' size='8' data-answer='["pbinom()","dbinom()","qbinom()"]'/></p>
 <ul>
 <li>What is the probability of getting exactly 25 heads out of 100 coin flips?</li>
 </ul>
@@ -631,7 +636,7 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <ul>
 <li>What is the probability of getting less than 5 heads out of 10 coin flips?</li>
 </ul>
-<p><input class='solveme nospaces' size='8' data-answer='["qbinom()","dbinom()","pbinom()"]'/></p>
+<p><input class='solveme nospaces' size='8' data-answer='["qbinom()","pbinom()","dbinom()"]'/></p>
 <hr />
 <p>So, the binomial distribution can tell us about <strong>discrete</strong> events - it is <strong>binary</strong>. We can use this distribution to talk about events with only <strong>two</strong> possible outcomes (e.g. heads/tails, pass/fail, yes/no).</p>
 <p>There is a finite amount of events in a binomial distribution which means it often doesn’t suit our needs for more complex questions.</p>
