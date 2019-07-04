@@ -11,7 +11,7 @@ navbar:
       href: Intro_Tidyverse.html
     - text: "Data Relations"
       href: Data_Relations.html
-    - text: "Probability" 
+    - text: "Probability Distributions" 
       href: Probability_Dist.html
 output:
   html_document:
