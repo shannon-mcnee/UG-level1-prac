@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <br>
 
-The aim of this resource is to provide you with hints, tips, and support based on questions from previous Level One students.
+The aim of this resource is to provide you with hints, tips, and support based around your pre-class and in-class lab materials across Semester One and Semester Two of Level One Psychology.  
 
 [Setting Up](Setting_up.html) introduces you to the R environment, different file types, and teaches you how to resolve common set up errors.
 
@@ -18,7 +18,7 @@ The aim of this resource is to provide you with hints, tips, and support based o
 
 You can then build upon your knowledge of `tidyverse` verbs in [Data Relations](Data_Relations.html). 
 
-<br>
+[Probability](Probability_Dist.html) introduces you to the concept of probability, levels of measurement, and types of probability distribution. 
 
 ## Installing R on your own device 
 

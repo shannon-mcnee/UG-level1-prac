@@ -459,48 +459,53 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">11</td>
-<td align="right">0.011</td>
+<td align="right">12</td>
+<td align="right">0.012</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">39</td>
-<td align="right">0.039</td>
+<td align="right">38</td>
+<td align="right">0.038</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">131</td>
-<td align="right">0.131</td>
+<td align="right">117</td>
+<td align="right">0.117</td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
-<td align="right">166</td>
-<td align="right">0.166</td>
+<td align="right">200</td>
+<td align="right">0.200</td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
-<td align="right">253</td>
-<td align="right">0.253</td>
+<td align="right">272</td>
+<td align="right">0.272</td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
-<td align="right">222</td>
-<td align="right">0.222</td>
+<td align="right">209</td>
+<td align="right">0.209</td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
-<td align="right">112</td>
-<td align="right">0.112</td>
+<td align="right">107</td>
+<td align="right">0.107</td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
-<td align="right">59</td>
-<td align="right">0.059</td>
+<td align="right">35</td>
+<td align="right">0.035</td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
-<td align="right">7</td>
-<td align="right">0.007</td>
+<td align="right">8</td>
+<td align="right">0.008</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">0.002</td>
 </tr>
 </tbody>
 </table>
@@ -535,10 +540,10 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <p><strong>Pause here and test your knowledge</strong></p>
 <p>What kinds of data are the following examples?</p>
 <ul>
-<li>Time taken to hike Ben Nevis (in hours): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>interval</option> <option>ratio</option> <option>ordinal</option> <option>categorical</option></select></li>
-<li>Finishing position in descent from the peak of Ben Nevis (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>interval</option> <option>categorical</option></select></li>
-<li>Difference in temperature at the peak of Ben Nevis to the foot of Ben Nevis (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>categorical</option> <option>ratio</option> <option>interval</option></select></li>
-<li>The name of the climbing expedition group: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>categorical</option> <option>interval</option></select></li>
+<li>Time taken to hike Ben Nevis (in hours): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>interval</option> <option>ordinal</option> <option>categorical</option> <option>ratio</option></select></li>
+<li>Finishing position in descent from the peak of Ben Nevis (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>categorical</option> <option>interval</option></select></li>
+<li>Difference in temperature at the peak of Ben Nevis to the foot of Ben Nevis (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>categorical</option> <option>interval</option></select></li>
+<li>The name of the climbing expedition group: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>categorical</option> <option>ordinal</option> <option>interval</option> <option>ratio</option></select></li>
 </ul>
 <hr />
 </div>
@@ -567,7 +572,7 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <ul>
 <li>What would be the appropriate code to find out the probability of getting exactly 8 heads out of 10 flips on a <strong>biased</strong> coin (i.e. there is not a 50/50 chance of getting heads or tails).</li>
 </ul>
-<p><select class='solveme' data-answer='["dbinom(x = 8, size = 10, prob = 0.8)"]'> <option></option> <option>dbinom(x = 10, size = 8, prob = 0.5)</option> <option>dbinom(x = 10, size = 8, prob = 0.8)</option> <option>dbinom(x = 8, size = 10, prob = 0.8)</option></select></p>
+<p><select class='solveme' data-answer='["dbinom(x = 8, size = 10, prob = 0.8)"]'> <option></option> <option>dbinom(x = 10, size = 8, prob = 0.8)</option> <option>dbinom(x = 8, size = 10, prob = 0.8)</option> <option>dbinom(x = 10, size = 8, prob = 0.5)</option></select></p>
 <hr />
 </div>
 <div id="pbinom" class="section level3">
@@ -619,7 +624,7 @@ data_heads &lt;- tibble(heads = heads) %&gt;%
 <ul>
 <li>What is the probability of getting exactly 25 heads out of 100 coin flips?</li>
 </ul>
-<p><input class='solveme nospaces' size='8' data-answer='["pbinom()","qbinom()","dbinom()"]'/></p>
+<p><input class='solveme nospaces' size='8' data-answer='["dbinom()","qbinom()","pbinom()"]'/></p>
 <ul>
 <li>What is the probability of getting less than 5 heads out of 10 coin flips?</li>
 </ul>
